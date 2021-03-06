@@ -52,7 +52,17 @@ public class Coursework {
     private static void deletingEdge() {
 
         // Getting an integer array of inputs from the user
-        int[] edgeDetails = getEdgeInfo();
+        int[] edgeDetails = getEdgeInfo(false);
+
+        // Setting the Edge with the given input details to 0 (removing the edge)
+        if(edgeDetails[0] < graph_data.length || edgeDetails[1] < graph_data.length){
+            graph_data[edgeDetails[0]][edgeDetails[1]] = 0;
+            System.out.println("Edge removed successfully!");
+
+        }else{
+            System.out.println("You inputs seems to be invalid please try again.");
+
+        }
 
     }
 
@@ -60,7 +70,7 @@ public class Coursework {
     private static void insertingEdge() {
 
         // Getting an integer array of inputs from the user
-        int[] edgeDetails = getEdgeInfo();
+        int[] edgeDetails = getEdgeInfo(true);
 
         // Checking if edge is present and overriding else we normally add the edge
         if(edgeDetails[0] < graph_data.length || edgeDetails[1] < graph_data.length){
@@ -82,7 +92,7 @@ public class Coursework {
     }
 
     // Get Inputs related to Edge function
-    private static int[] getEdgeInfo() {
+    private static int[] getEdgeInfo(boolean insertingEdge) {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter the 'from' node value (Integers expected):");
@@ -91,10 +101,14 @@ public class Coursework {
         System.out.println("Enter the 'to' node value (Integers expected):");
         int to_node = input.nextInt();
 
-        System.out.println("Enter the capacity value (Integers expected):");
-        int capacity_value = input.nextInt();
+        if(!insertingEdge){
+            System.out.println("Enter the capacity value (Integers expected):");
+            int capacity_value = input.nextInt();
 
-        return new int[]{from_node, to_node, capacity_value};
+            return new int[]{from_node, to_node, capacity_value};
+        }
+
+        return new int[]{from_node, to_node};
     }
 
     // This method will return a 2D Matrix of the graph data representation.
