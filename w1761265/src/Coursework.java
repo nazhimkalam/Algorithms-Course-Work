@@ -13,16 +13,24 @@ public class Coursework {
         // Reading all data from input file and creating a graph matrix
         graph_data = readDataFromFile();
 
-        // Viewing the created matrix (if necessary)
-//        for (int i = 0; i < graph_data.length; i++) {
-//            for (int j = 0; j < graph_data.length; j++) {
-//                System.out.print(graph_data[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
+        // Calling the Main Display Menu
+        displayMenuAndResult();
 
+    }
+
+    // Main Code gets called here
+    private static void displayMenuAndResult() {
+        System.out.println("================================");
         // Making sure that graph data is present to proceed
         if(graph_data != null){
+
+            // Viewing the created matrix (if necessary)
+            for (int i = 0; i < graph_data.length; i++) {
+                for (int j = 0; j < graph_data.length; j++) {
+                    System.out.print(graph_data[i][j] + " ");
+                }
+                System.out.println();
+            }
             System.out.println("The maximum generated flow is ");
 
             // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
@@ -36,16 +44,17 @@ public class Coursework {
             if(option.trim().equalsIgnoreCase("1")){
                 // Inserting an edge
                 insertingEdge();
+                displayMenuAndResult();
 
             }else if(option.trim().equalsIgnoreCase("2")){
                 // Deleting an edge
                 deletingEdge();
+                displayMenuAndResult();
 
             }else {
                 System.exit(200);
             }
         }
-
     }
 
     // Deleting an edge function
@@ -60,7 +69,7 @@ public class Coursework {
             System.out.println("Edge removed successfully!");
 
         }else{
-            System.out.println("You inputs seems to be invalid please try again.");
+            System.out.println("Your inputs seems to be invalid please try again.");
 
         }
 
@@ -85,7 +94,7 @@ public class Coursework {
 
             }
         }else{
-            System.out.println("You inputs seems to be invalid please try again.");
+            System.out.println("Your inputs seems to be invalid please try again.");
 
         }
 
@@ -101,7 +110,7 @@ public class Coursework {
         System.out.println("Enter the 'to' node value (Integers expected):");
         int to_node = input.nextInt();
 
-        if(!insertingEdge){
+        if(insertingEdge){
             System.out.println("Enter the capacity value (Integers expected):");
             int capacity_value = input.nextInt();
 
