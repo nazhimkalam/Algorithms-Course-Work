@@ -2,22 +2,99 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Coursework {
+    public static int[][] graph_data;
 
     public static void main(String[] args) {
 
         // Reading all data from input file and creating a graph matrix
-        int[][] graph_data = readDataFromFile();
-        for (int i = 0; i < graph_data.length; i++) {
-            for (int j = 0; j < graph_data.length; j++) {
-                System.out.print(graph_data[i][j] + " ");
+        graph_data = readDataFromFile();
+
+        // Viewing the created matrix (if necessary)
+//        for (int i = 0; i < graph_data.length; i++) {
+//            for (int j = 0; j < graph_data.length; j++) {
+//                System.out.print(graph_data[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+
+        // Making sure that graph data is present to proceed
+        if(graph_data != null){
+            System.out.println("The maximum generated flow is ");
+
+            // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
+            System.out.println("Enter (1) Insert an edge, (2) Delete an edge, (3) to quit the program.");
+            Scanner input = new Scanner(System.in);
+
+            // Getting the user option
+            String option = input.nextLine();
+
+            // Handle Conditions
+            if(option.trim().equalsIgnoreCase("1")){
+                // Inserting an edge
+                insertingEdge();
+
+            }else if(option.trim().equalsIgnoreCase("2")){
+                // Deleting an edge
+                deletingEdge();
+
+            }else {
+                System.exit(200);
             }
-            System.out.println();
         }
 
+    }
 
+    // Deleting an edge function
+    private static void deletingEdge() {
+
+        // Getting an integer array of inputs from the user
+        int[] edgeDetails = getEdgeInfo();
+
+    }
+
+    // Inserting an edge function
+    private static void insertingEdge() {
+
+        // Getting an integer array of inputs from the user
+        int[] edgeDetails = getEdgeInfo();
+
+        // Checking if edge is present and overriding else we normally add the edge
+        if(edgeDetails[0] < graph_data.length || edgeDetails[1] < graph_data.length){
+            if(graph_data[edgeDetails[0]][edgeDetails[1]] != 0){
+                graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
+                System.out.println("Edge added successfully!");
+
+            }else{
+                graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
+                System.out.println("Overriding edge, since there is an edge already with these inputs");
+                System.out.println("Edge added successfully!");
+
+            }
+        }else{
+            System.out.println("You inputs seems to be invalid please try again.");
+
+        }
+
+    }
+
+    // Get Inputs related to Edge function
+    private static int[] getEdgeInfo() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter the 'from' node value (Integers expected):");
+        int from_node = input.nextInt();
+
+        System.out.println("Enter the 'to' node value (Integers expected):");
+        int to_node = input.nextInt();
+
+        System.out.println("Enter the capacity value (Integers expected):");
+        int capacity_value = input.nextInt();
+
+        return new int[]{from_node, to_node, capacity_value};
     }
 
     // This method will return a 2D Matrix of the graph data representation.
@@ -39,34 +116,38 @@ public class Coursework {
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
-            e.printStackTrace();
         }
 
-        // Setting the size of the matrix
-        int matrix_size = Integer.parseInt(inputData.get(0));
+        if(inputData.size() != 0){
+            // Setting the size of the matrix
+            int matrix_size = Integer.parseInt(inputData.get(0));
 
-        // Starting to create the graph matrix
-        int[][] graph_data = new int[matrix_size][matrix_size];
+            // Starting to create the graph matrix
+            int[][] graph_data = new int[matrix_size][matrix_size];
 
-        System.out.println("Converting graph data into a 2D matrix representation...");
-        // Initializing all the elements of the graph in the 2D array with the value 0
-        for (int row = 0; row < matrix_size; row++) {
-            for (int column = 0; column < matrix_size; column++) {
-                graph_data[row][column] = 0;
+            System.out.println("Converting graph data into a 2D matrix representation...");
+            // Initializing all the elements of the graph in the 2D array with the value 0
+            for (int row = 0; row < matrix_size; row++) {
+                for (int column = 0; column < matrix_size; column++) {
+                    graph_data[row][column] = 0;
+                }
             }
+
+            // Adding the edge data values to the respective positions in the 2D matrix
+            for (int item = 1; item < inputData.size(); item++) {
+                String[] split_data = inputData.get(item).split(" ");
+                int x_coordinate = Integer.parseInt(split_data[0]);
+                int y_coordinate = Integer.parseInt(split_data[1]);
+                int value = Integer.parseInt(split_data[2]);
+
+                graph_data[x_coordinate][y_coordinate] = value;
+            }
+
+            return graph_data;
+        }else {
+            return null;
         }
 
-        // Adding the edge data values to the respective positions in the 2D matrix
-        for (int item = 1; item < inputData.size(); item++) {
-            String[] split_data = inputData.get(item).split(" ");
-            int x_coordinate = Integer.parseInt(split_data[0]);
-            int y_coordinate = Integer.parseInt(split_data[1]);
-            int value = Integer.parseInt(split_data[2]);
-
-            graph_data[x_coordinate][y_coordinate] = value;
-        }
-
-        return graph_data;
     }
 
 }
