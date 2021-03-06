@@ -17,7 +17,7 @@ public class FordFulkerson {
 
         int max_flow = 0;
 
-        // Updating the residual calues of edges
+        // Updating the residual values of edges
         while (bfs(Graph, s, t, p)) {
             int path_flow = Integer.MAX_VALUE;
             for (v = t; v != s; v = p[v]) {
