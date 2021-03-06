@@ -25,13 +25,18 @@ public class Coursework {
         if(graph_data != null){
 
             // Viewing the created matrix (if necessary)
-            for (int i = 0; i < graph_data.length; i++) {
-                for (int j = 0; j < graph_data.length; j++) {
-                    System.out.print(graph_data[i][j] + " ");
-                }
-                System.out.println();
-            }
-            System.out.println("The maximum generated flow is ");
+//            for (int i = 0; i < graph_data.length; i++) {
+//                for (int j = 0; j < graph_data.length; j++) {
+//                    System.out.print(graph_data[i][j] + " ");
+//                }
+//                System.out.println();
+//            }
+
+            // Creating an instance of the FordFulkerson Algorithm
+            FordFulkerson algorithm = new FordFulkerson();
+
+            // Displaying the result to the user
+            System.out.println("The maximum generated flow is " + algorithm.fordFulkerson(graph_data, 0, graph_data.length-1));
 
             // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
             System.out.println("Enter (1) Insert an edge, (2) Delete an edge, (3) to quit the program.");
