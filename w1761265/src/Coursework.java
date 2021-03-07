@@ -178,11 +178,11 @@ public class Coursework {
             // Adding the edge data values to the respective positions in the 2D matrix
             for (int item = 1; item < inputData.size(); item++) {
                 String[] split_data = inputData.get(item).split(" ");
-                int x_coordinate = Integer.parseInt(split_data[0]);
-                int y_coordinate = Integer.parseInt(split_data[1]);
+                int x_index = Integer.parseInt(split_data[0]);
+                int y_index = Integer.parseInt(split_data[1]);
                 int value = Integer.parseInt(split_data[2]);
 
-                graph_data[x_coordinate][y_coordinate] = value;
+                graph_data[x_index][y_index] = value;
             }
 
             return graph_data;
