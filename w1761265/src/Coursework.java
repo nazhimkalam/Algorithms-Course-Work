@@ -1,24 +1,25 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Coursework {
+
+    // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
 
+    // MAIN MENU
     public static void main(String[] args) {
 
         // Reading all data from input file and creating a graph matrix
         graph_data = readDataFromFile();
 
-        // Calling the Main Display Menu
+        // Calling the Display Menu and Result Function
         displayMenuAndResult();
 
     }
 
-    // Main Code gets called here
+    // Display Menu and Result Function
     private static void displayMenuAndResult() {
         System.out.println("================================");
         // Making sure that graph data is present to proceed
@@ -60,6 +61,7 @@ public class Coursework {
                 System.exit(200);
             }
         }
+
     }
 
     // Deleting an edge function
@@ -144,6 +146,7 @@ public class Coursework {
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
+            System.out.println("File not found!");
         }
 
         if(inputData.size() != 0){
@@ -173,6 +176,8 @@ public class Coursework {
 
             return graph_data;
         }else {
+
+            // Returns null if no file found
             return null;
         }
 
