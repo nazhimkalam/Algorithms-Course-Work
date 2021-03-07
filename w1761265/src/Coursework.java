@@ -40,7 +40,7 @@ public class Coursework {
             System.out.println("The maximum generated flow is " + algorithm.fordFulkerson(graph_data, 0, graph_data.length-1));
 
             // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
-            System.out.println("Enter (1) Insert an edge, (2) Delete an edge, (3) to quit the program.");
+            System.out.println("Enter (1) Insert an edge, (2) Delete an edge, (any other key) to quit the program.");
             Scanner input = new Scanner(System.in);
 
             // Getting the user option
@@ -58,6 +58,7 @@ public class Coursework {
                 displayMenuAndResult();
 
             }else {
+                System.out.println("Quitting the program...");
                 System.exit(200);
             }
         }
@@ -109,22 +110,32 @@ public class Coursework {
 
     // Get Inputs related to Edge function
     private static int[] getEdgeInfo(boolean insertingEdge) {
-        Scanner input = new Scanner(System.in);
+        int from_node = validatingIntegers("Enter the 'from' node value (Integers expected):");
 
-        System.out.println("Enter the 'from' node value (Integers expected):");
-        int from_node = input.nextInt();
-
-        System.out.println("Enter the 'to' node value (Integers expected):");
-        int to_node = input.nextInt();
+        int to_node = validatingIntegers("Enter the 'to' node value (Integers expected):");
 
         if(insertingEdge){
-            System.out.println("Enter the capacity value (Integers expected):");
-            int capacity_value = input.nextInt();
-
+            int capacity_value = validatingIntegers("Enter the capacity value (Integers expected):");
             return new int[]{from_node, to_node, capacity_value};
         }
 
         return new int[]{from_node, to_node};
+    }
+
+    // validates the Integers
+    public static int validatingIntegers(String message) {
+        Scanner input = new Scanner(System.in);
+        System.out.print(message);
+        while (!input.hasNextInt()) {
+
+            // we get the user input and check if the user has entered a valid integer or not and then validate asking
+            // integer input again until condition satisfied
+            System.out.println("\n Invalid input, please enter a valid integer!");
+            System.out.print(message);
+            input.next();
+
+        }
+        return input.nextInt();
     }
 
     // This method will return a 2D Matrix of the graph data representation.
