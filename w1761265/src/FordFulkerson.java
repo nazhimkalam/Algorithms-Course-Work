@@ -33,13 +33,14 @@ public class FordFulkerson {
 
             // By using BFS we are finding the (minimum residual capacity) of the edges along the path which can be
             // filled with.
+            System.out.println("Finding the minimum residual capacity...");
             int path_flow = Integer.MAX_VALUE;
             for (y = target; y != source; y = parent_arr[y]) {
                 x = parent_arr[y];
                 path_flow = Math.min(path_flow, resGraph[x][y]);
             }
-            System.out.println("Find the minimum residual capacity...");
 
+            System.out.println("Updating the residual capacities of the edges...");
             // Updating the residual capacities of the edges.
             // Also reversing the edges along the path.
             for (y = target; y != source; y = parent_arr[y]) {
@@ -52,6 +53,8 @@ public class FordFulkerson {
 
             // Adding the path flows to the overall flow
             maximum_flow += path_flow;
+            System.out.println("Adding the path flows to the overall flow...");
+
         }
         System.out.println("--->");
 
@@ -64,6 +67,7 @@ public class FordFulkerson {
     // It also fills parent[] array to store the path
     public static boolean bfs(int[][] Graph, int source, int target, int[] parent) {
 
+        System.out.println("Performing BFS (Breadth-first search)...");
         // Creating and Initializing the visited array with 'false' indicated all vertices aren't visited initially.
         boolean[] visited = new boolean[tot_Vertex];
         for (int index = 0; index < tot_Vertex; ++index) {
