@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Coursework {
+public class Runner {
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
