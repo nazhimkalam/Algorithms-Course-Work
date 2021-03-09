@@ -30,12 +30,7 @@ public class Runner {
         if (graph_data != null) {
 
             // Viewing the created matrix (if necessary)
-//            for (int i = 0; i < graph_data.length; i++) {
-//                for (int j = 0; j < graph_data.length; j++) {
-//                    System.out.print(graph_data[i][j] + " ");
-//                }
-//                System.out.println();
-//            }
+//            viewingGraphMatrix(graph_data);
 
             // Creating an instance of the FordFulkerson Algorithm
             FordFulkerson algorithm = new FordFulkerson();
@@ -68,6 +63,16 @@ public class Runner {
                 System.out.println("Quitting the program...");
                 System.exit(200);
             }
+        }
+    }
+
+    // method used to print out the graph matrix
+    private static void viewingGraphMatrix(int[][] graph_data) {
+        for (int[] graph_datum : graph_data) {
+            for (int j = 0; j < graph_data.length; j++) {
+                System.out.print(graph_datum[j] + " ");
+            }
+            System.out.println();
         }
     }
 
