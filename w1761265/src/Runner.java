@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Runner {
+    // Input path for the data input file
+    private static final String INPUT_FILE_PATH = "inputData/ladder_2.txt";
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
@@ -30,13 +32,16 @@ public class Runner {
         if (graph_data != null) {
 
             // Viewing the created matrix (if necessary)
-//            viewingGraphMatrix(graph_data);
+            System.out.println("\n> This is the Adjacent Matrix for a given Graph <\n");
+            viewingGraphMatrix(graph_data);
+            System.out.println();
 
             // Creating an instance of the FordFulkerson Algorithm
             FordFulkerson algorithm = new FordFulkerson();
 
             // Displaying the result to the user
-            System.out.println("The maximum generated flow is " + algorithm.fordFulkerson(graph_data, 0, graph_data.length - 1));
+            System.out.println("The maximum generated flow is " + algorithm.fordFulkerson(graph_data, 0,
+                    graph_data.length - 1));
 
             // Displaying out the time taken to complete the algorithm
             System.out.println("Elapsed time = " + timer.elapsedTime());
@@ -147,51 +152,12 @@ public class Runner {
 
     // This method will return a 2D Matrix of the graph data representation.
     private static int[][] readDataFromFile() {
+        // Getting the graph data from the file
+        ArrayList<String> graphInputData = ReadDataFile.readingData(INPUT_FILE_PATH);
 
-        // Stores collection of lines from the input file
-        ArrayList<String> inputData = new ArrayList<>();
-
-        // This block of code is used to read the data from the input file
-        // Also add every sentence one by one into the collection (inputData)
-        System.out.println("Reading data from file...");
-        try {
-            File myObj = new File("inputData/ladder_9.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                inputData.add(data);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            System.out.println("File not found!");
-        }
-
-        if (inputData.size() != 0) {
-            // Setting the size of the matrix
-            int matrix_size = Integer.parseInt(inputData.get(0).trim());
-
-            // Starting to create the graph matrix
-            int[][] graph_data = new int[matrix_size][matrix_size];
-
-            System.out.println("Converting graph data into a 2D matrix representation (Adjacent Matrix)...");
-            // Initializing all the elements of the graph in the 2D array with the value 0
-            for (int row = 0; row < matrix_size; row++) {
-                for (int column = 0; column < matrix_size; column++) {
-                    graph_data[row][column] = 0;
-                }
-            }
-
-            // Adding the edge data values to the respective positions in the 2D matrix
-            for (int item = 1; item < inputData.size(); item++) {
-                String[] split_data = inputData.get(item).split(" ");
-                int x_index = Integer.parseInt(split_data[0].trim());
-                int y_index = Integer.parseInt(split_data[1].trim());
-                int value = Integer.parseInt(split_data[2].trim());
-
-                graph_data[x_index][y_index] = value;
-            }
-            return graph_data;
+        if (graphInputData.size() != 0) {
+            // Generating the Adjacent Matrix for the Graph
+            return Graph.generateGraph(graphInputData);
 
         } else {
             // Returns null if no file found
