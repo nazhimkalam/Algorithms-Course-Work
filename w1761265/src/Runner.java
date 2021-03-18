@@ -36,11 +36,8 @@ public class Runner {
             viewingGraphMatrix(graph_data);
             System.out.println();
 
-            // Creating an instance of the FordFulkerson Algorithm
-            FordFulkerson algorithm = new FordFulkerson();
-
-            // Displaying the result to the user
-            System.out.println("The maximum generated flow is " + algorithm.fordFulkerson(graph_data, 0,
+            // Displaying the result to the user by calling the ford fulkerson algorithm
+            System.out.println("The maximum generated flow is " + FordFulkerson.fordFulkerson(graph_data, 0,
                     graph_data.length - 1));
 
             // Displaying out the time taken to complete the algorithm
