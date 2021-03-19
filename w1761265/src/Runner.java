@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Runner {
     // Input path for the data input file
-    private static final String INPUT_FILE_PATH = "inputData/data.txt";
+    private static final String INPUT_FILE_PATH = "inputData/ladder_9.txt";
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
@@ -198,25 +198,25 @@ public class Runner {
 }
 
 // Time Taken (Repeat 3 times and get the average time)
-// bridge_1.txt  --> (0.001, 0.002, 0.002)  ---> max flows: 2
-// bridge_2.txt  --> (0.002, 0.001, 0.001)  ---> max flows: 2
-// bridge_3.txt  --> (0.001, 0.002, 0.003)  ---> max flows: 2
-// bridge_4.txt  --> (0.001, 0.002, 0.002)  ---> max flows: 2
-// bridge_5.txt  --> (0.002, 0.003, 0.003)  ---> max flows: 2
-// bridge_6.txt  --> (0.003, 0.003, 0.005)  ---> max flows: 2
-// bridge_7.txt  --> (0.011, 0.012, 0.013)  ---> max flows: 2
-// bridge_8.txt  --> (0.016, 0.023, 0.026)  ---> max flows: 2
-// bridge_9.txt  --> (0.043, 0.038, 0.036)  ---> max flows: 2
+// bridge_1.txt  --> (0.024, 0.016, 0.002)  ---> max flows: 2
+// bridge_2.txt  --> (0.003, 0.005, 0.004)  ---> max flows: 2
+// bridge_3.txt  --> (0.015, 0.002, 0.003)  ---> max flows: 2
+// bridge_4.txt  --> (0.015, 0.001, 0.016)  ---> max flows: 2
+// bridge_5.txt  --> (0.016, 0.015, 0.015)  ---> max flows: 2
+// bridge_6.txt  --> (0.063, 0.08, 0.068)  ---> max flows: 2
+// bridge_7.txt  --> (0.188, 0.187, 0.195)  ---> max flows: 2
+// bridge_8.txt  --> (0.62, 0.566, 1.032)  ---> max flows: 2
+// bridge_9.txt  --> (3.213, 4.223, 3.855)  ---> max flows: 2
 
-// ladder_1.txt  --> (0.003, 0.002, 0.001)  ---> max flows:4
-// ladder_2.txt  --> (0.002, 0.004, 0.004)  ---> max flows:7
-// ladder_3.txt  --> (0.007, 0.005, 0.004)  ---> max flows:13
-// ladder_4.txt  --> (0.009, 0.01, 0.007)  ---> max flows:25
-// ladder_5.txt  --> (0.018, 0.024, 0.02)  ---> max flows:49
-// ladder_6.txt  --> (0.041, 0.051, 0.045)  ---> max flows:97
-// ladder_7.txt  --> (0.165, 0.176, 0.16)  ---> max flows:193
-// ladder_8.txt  --> (1.046, 1.128, 1.083)  ---> max flows:385
-// ladder_9.txt  --> (6.937, 7.043, 7.107)  ---> max flows:769
+// ladder_1.txt  --> (0.0, 0.001, 0.001)  ---> max flows:4
+// ladder_2.txt  --> (0.015, 0.016, 0.016)  ---> max flows:7
+// ladder_3.txt  --> (0.01, 0.01, 0.015)  ---> max flows:13
+// ladder_4.txt  --> (0.015, 0.015, 0.037)  ---> max flows:25
+// ladder_5.txt  --> (0.051, 0.061, 0.062)  ---> max flows:49
+// ladder_6.txt  --> (0.535, 0.12, 0.139)  ---> max flows:97
+// ladder_7.txt  --> (0.685, 0.473, 0.716)  ---> max flows:193
+// ladder_8.txt  --> (2.758, 2.948, 3.333)  ---> max flows:385
+// ladder_9.txt  --> (11.457, 11.64, 12.707)  ---> max flows:769
 
 // References used
 // https://www.programiz.com/dsa/ford-fulkerson-algorithm
