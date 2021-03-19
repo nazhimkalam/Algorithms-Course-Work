@@ -198,10 +198,10 @@ public class Runner {
 }
 
 // Time Taken (Repeat 3 times and get the average time)
-// bridge_1.txt  --> (0.024, 0.016, 0.002)  ---> max flows: 2
+// bridge_1.txt  --> (0.001, 0.001, 0.002)  ---> max flows: 2
 // bridge_2.txt  --> (0.003, 0.005, 0.004)  ---> max flows: 2
-// bridge_3.txt  --> (0.015, 0.002, 0.003)  ---> max flows: 2
-// bridge_4.txt  --> (0.015, 0.001, 0.016)  ---> max flows: 2
+// bridge_3.txt  --> (0.015, 0.006, 0.004)  ---> max flows: 2
+// bridge_4.txt  --> (0.015, 0.010, 0.016)  ---> max flows: 2
 // bridge_5.txt  --> (0.016, 0.015, 0.015)  ---> max flows: 2
 // bridge_6.txt  --> (0.063, 0.08, 0.068)  ---> max flows: 2
 // bridge_7.txt  --> (0.188, 0.187, 0.195)  ---> max flows: 2
