@@ -95,8 +95,8 @@ public class Runner {
         // Calling the delete node method to delete an existing node from the graph
         UserOption.deleteNode(deleteNode, graph_data);
 
-//        // Updated Graph Data Visualization
-//        viewingGraphMatrix(graph_data);
+        // Updated Graph Data Visualization
+        // viewingGraphMatrix(graph_data);
 
     }
 
@@ -105,8 +105,8 @@ public class Runner {
         // Calling the insert node method to add a new node automatically in ascending order of the numbers
         graph_data = UserOption.insertNode(graph_data);
 
-//        // Updated Graph Data Visualization
-//        viewingGraphMatrix(graph_data);
+        // Updated Graph Data Visualization
+        // viewingGraphMatrix(graph_data);
     }
 
     // method used to print out the graph matrix

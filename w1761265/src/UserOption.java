@@ -18,7 +18,6 @@ public class UserOption {
         System.out.println(" Inserted a New Node Successful!");
 
         return updatedGraph;
-
     }
 
     // Delete Node (We are only removing all its edge of the node which has to be deleted which also means that
@@ -42,10 +41,12 @@ public class UserOption {
         }else{
             System.out.println(" You have entered an invalid node which is not present in the graph to be deleted!");
         }
+
     }
 
     // Delete Edge Method
     public static void deleteEdge(int[] edgeDetails, int[][] graph_data){
+
         // Setting the Edge with the given input details to 0 (removing the edge)
         if (edgeDetails[0] < graph_data.length && edgeDetails[1] < graph_data.length) {
             graph_data[edgeDetails[0]][edgeDetails[1]] = 0;
@@ -54,10 +55,12 @@ public class UserOption {
         } else {
             System.out.println(" Your inputs seems to be invalid please try again.");
         }
+
     }
 
     // Insert Edge Method
     public static void insertEdge(int[] edgeDetails, int[][] graph_data){
+
         // Checking if edge is present and overriding else we normally add the edge
         if (edgeDetails[0] < graph_data.length && edgeDetails[1] < graph_data.length) {
             if (graph_data[edgeDetails[0]][edgeDetails[1]] != 0) {
@@ -74,4 +77,5 @@ public class UserOption {
             System.out.println(" Your inputs seems to be invalid please try again.");
         }
     }
+
 }
