@@ -5,25 +5,22 @@ import java.util.Scanner;
 
 public class Runner {
     // Input path for the data input file
-    private static final String INPUT_FILE_PATH = "inputData/ladder_2.txt";
+    private static final String INPUT_FILE_PATH = "inputData/bridge_1.txt";
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
 
     // MAIN MENU
     public static void main(String[] args) {
-
         // Reading all data from input file and creating a graph matrix
         graph_data = readDataFromFile();
 
         // Calling the Display Menu and Result Function
         displayMenuAndResult();
-
     }
 
     // Display Menu and Result Function
     private static void displayMenuAndResult() {
-
         // Stopwatch to start and end the timer to get the time taken for completion
         Stopwatch timer = new Stopwatch();
 
@@ -44,41 +41,71 @@ public class Runner {
             System.out.println("Elapsed time = " + timer.elapsedTime());
 
             // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
-            System.out.println("Enter (1) Insert an edge, (2) Delete an edge, (any other key) to quit the program.");
+            System.out.println("\n| MAIN MENU" +
+                    "\n| Enter " +
+                    "\n| (1) Insert an Edge, " +
+                    "\n| (2) Delete an Edge, " +
+                    "\n| (3) Insert a Node, " +
+                    "\n| (4) Delete a Node, " +
+                    "\n| (any other key) to quit the program.");
+            System.out.print("\n Enter your option: ");
             Scanner input = new Scanner(System.in);
 
             // Getting the user option
             String option = input.nextLine();
 
             // Handle Conditions
-            if (option.trim().equalsIgnoreCase("1")) {
+            if (option.trim().equalsIgnoreCase("1")){
                 // Inserting an edge
                 insertingEdge();
-                displayMenuAndResult();
 
-            } else if (option.trim().equalsIgnoreCase("2")) {
+            } else if (option.trim().equalsIgnoreCase("2")){
                 // Deleting an edge
                 deletingEdge();
-                displayMenuAndResult();
+
+            } else if(option.trim().equalsIgnoreCase("3")){
+                // Inserting a Node
+                insertingNode();
+
+            } else if(option.trim().equalsIgnoreCase("4")){
+                // Deleting a Node
+                deletingNode();
 
             } else {
                 System.out.println("Quitting the program...");
                 System.exit(200);
             }
+
+            // Calling the Menu
+            displayMenuAndResult();
         }
+    }
+
+    // Deleting a Node from your current Graph
+    private static void deletingNode() {
+
+    }
+
+    // Inserting a Node to your current Graph
+    private static void insertingNode() {
+        // Calling the insert node method to add a new node automatically in ascending order of the numbers
+        graph_data = UserOption.insertNode(graph_data);
+
+        // Updated Graph Data Visualization
+        viewingGraphMatrix(graph_data);
     }
 
     // method used to print out the graph matrix
     private static void viewingGraphMatrix(int[][] graph_data) {
-        for (int[] graph_datum : graph_data) {
+        for (int[] data_row : graph_data) {
             for (int j = 0; j < graph_data.length; j++) {
-                System.out.print(graph_datum[j] + " ");
+                System.out.print(data_row[j] + " ");
             }
             System.out.println();
         }
     }
 
-    // Deleting an edge function
+    // Deleting an edge from your current graph
     private static void deletingEdge() {
         // Getting an integer array of inputs from the user
         int[] edgeDetails = getEdgeInfo(false);
@@ -87,20 +114,18 @@ public class Runner {
         UserOption.deleteEdge(edgeDetails, graph_data);
     }
 
-    // Inserting an edge function
+    // Inserting an edge from your current graph
     private static void insertingEdge() {
         // Getting an integer array of inputs from the user
         int[] edgeDetails = getEdgeInfo(true);
 
         // Calling the insert edge method from the user option class to perform the operation
         UserOption.insertEdge(edgeDetails, graph_data);
-
     }
 
-    // Get Inputs related to Edge function
+    // A function to get inputs related to Edge
     private static int[] getEdgeInfo(boolean insertingEdge) {
-        int from_node = validatingIntegers("Enter the 'from' node value (Integers expected):");
-
+        int from_node = validatingIntegers("Enter the 'from' node value (Integers expected): ");
         int to_node = validatingIntegers("Enter the 'to' node value (Integers expected):");
 
         if (insertingEdge) {
@@ -122,7 +147,6 @@ public class Runner {
             System.out.println("\n Invalid input, please enter a valid integer!");
             System.out.print(message);
             input.next();
-
         }
         return input.nextInt();
     }
@@ -135,7 +159,6 @@ public class Runner {
         if (graphInputData.size() != 0) {
             // Generating the Adjacent Matrix for the Graph
             return Graph.generateGraph(graphInputData);
-
         } else {
             // Returns null if no file found
             return null;
