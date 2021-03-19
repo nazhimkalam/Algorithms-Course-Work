@@ -84,6 +84,20 @@ public class Runner {
     // Deleting a Node from your current Graph
     private static void deletingNode() {
 
+        // Getting the node number to be deleted from the user via the console
+        int deleteNode = validatingIntegers(" Enter the node you wish to delete from the current graph (Positive Integer)");
+
+        // Validating for positive inputs
+        while (deleteNode < 0){
+            deleteNode = validatingIntegers(" Enter the node you wish to delete from the current graph (Positive Integer)");
+        }
+
+        // Calling the delete node method to delete an existing node from the graph
+        UserOption.deleteNode(deleteNode, graph_data);
+
+//        // Updated Graph Data Visualization
+//        viewingGraphMatrix(graph_data);
+
     }
 
     // Inserting a Node to your current Graph
@@ -91,8 +105,8 @@ public class Runner {
         // Calling the insert node method to add a new node automatically in ascending order of the numbers
         graph_data = UserOption.insertNode(graph_data);
 
-        // Updated Graph Data Visualization
-        viewingGraphMatrix(graph_data);
+//        // Updated Graph Data Visualization
+//        viewingGraphMatrix(graph_data);
     }
 
     // method used to print out the graph matrix
@@ -125,11 +139,27 @@ public class Runner {
 
     // A function to get inputs related to Edge
     private static int[] getEdgeInfo(boolean insertingEdge) {
-        int from_node = validatingIntegers("Enter the 'from' node value (Integers expected): ");
-        int to_node = validatingIntegers("Enter the 'to' node value (Integers expected):");
+
+        int from_node = validatingIntegers("Enter the 'from' node value (Positive Integers expected): ");
+        // Positive Integer Validation
+        while(from_node < 0){
+            from_node = validatingIntegers(" Enter the 'from' node value (Positive Integers expected): ");
+        }
+
+        int to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected):");
+        // Positive Integer Validation
+        while(to_node < 0){
+            to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected):");
+        }
 
         if (insertingEdge) {
-            int capacity_value = validatingIntegers("Enter the capacity value (Integers expected):");
+            int capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected):");
+
+            // Positive Integer Validation
+            while(capacity_value < 0){
+                capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected):");
+            }
+
             return new int[]{from_node, to_node, capacity_value};
         }
 
@@ -144,7 +174,7 @@ public class Runner {
 
             // we get the user input and check if the user has entered a valid integer or not and then validate asking
             // integer input again until condition satisfied
-            System.out.println("\n Invalid input, please enter a valid integer!");
+            System.out.println("\n Invalid input, please enter a valid positive integer!");
             System.out.print(message);
             input.next();
         }

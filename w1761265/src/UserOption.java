@@ -4,7 +4,6 @@ public class UserOption {
 
     // Insert Node
     public static int[][] insertNode(int[][] graph){
-        System.out.println(graph.length);
 
         int newGraphSize = graph.length + 1;
         int[][] updatedGraph = new int[newGraphSize][newGraphSize];
@@ -16,15 +15,33 @@ public class UserOption {
         }
 
         // Output message and returning the updated new graph
-        System.out.println("Inserted a New Node Successful!");
+        System.out.println(" Inserted a New Node Successful!");
 
         return updatedGraph;
 
     }
 
-    // Delete Node
-    public static void deleteNode(String node, int[][] graph){
+    // Delete Node (We are only removing all its edge of the node which has to be deleted which also means that
+    // the node is still present but not connected with in the graph with the other nodes, hence its considered as removed)
+    public static void deleteNode(int deleteNode, int[][] graph){
 
+        if(!(deleteNode > graph.length-1)){
+            for (int rowData = 0; rowData < graph.length; rowData++) {
+                if(rowData == deleteNode){
+                    // Removing all the edges from the deleteNode to the other nodes in direction
+                    for (int colData = 0; colData < graph.length; colData++) {
+                        graph[rowData][colData] = 0;
+                    }
+                }
+
+                // Removing edges from other node to the delete node in direction
+                graph[rowData][deleteNode] = 0;
+            }
+            System.out.println(" Node removed successfully!");
+
+        }else{
+            System.out.println(" You have entered an invalid node which is not present in the graph to be deleted!");
+        }
     }
 
     // Delete Edge Method
