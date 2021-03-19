@@ -24,7 +24,7 @@ public class Runner {
         // Stopwatch to start and end the timer to get the time taken for completion
         Stopwatch timer = new Stopwatch();
 
-        System.out.println(" <><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+        System.out.println(" <><><><><><><><><><><><><><><><><><><><><><><><><><><><> ");
         // Making sure that graph data is present to proceed
         if (graph_data != null) {
 

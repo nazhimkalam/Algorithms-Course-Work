@@ -75,3 +75,27 @@ public class FordFulkerson {
         return String.valueOf(maximum_flow);
     }
 }
+
+
+// ABOUT FORD FULKERSON ALGORITHM
+// - The Ford Fulkerson Algorithm is used to find the maximum flow from the Source Node 's' to the Target Node 't'
+// - The flow on an edge doesn't exceed the given capacity of the edge.
+// - For all the other node except for the source and the sink node, the total incoming flow is equal to the total outgoing
+//   flow at a node.
+
+// HOW TO IMPLEMENT THE FORD FULKERSON ALGORITHM
+// - Residual Capacity is 0 if there is no edge between two vertices of the residual graph.
+// - We can initialize the residual graph as original graph as there is no flow in the beginning.
+// - At start the Residual Capacity is equal to the Original Capacity.
+// - We have to find the augmenting path from the source to the sink node.
+// - For this we can use either BFS ot DFS to the residual graph.
+// - BFS is used here because it promises to find the shortest possible path with the maximum flow where DFS doesn't.
+// - So using BFS we can find the shortest path from source to sink.
+// - BFS makes use of the parent[] array to store the found paths.
+// - We now traverse through the found path and find possible flow through this path by finding minimum residual capacity,
+//   along the path.
+// - Once we get the found path with the flow capacity we add it to the overall flow.
+// - Now it's very important to update the residual capacity in the residual graph.
+// - We now subtract path flow from all edges along the path (forward edge).
+// - We also add path flow along the reverse edge (backward edge).
+// - This process repeats until there is no more augmenting paths available to update the residual graph.
