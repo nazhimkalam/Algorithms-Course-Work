@@ -80,41 +80,21 @@ public class Runner {
 
     // Deleting an edge function
     private static void deletingEdge() {
-
         // Getting an integer array of inputs from the user
         int[] edgeDetails = getEdgeInfo(false);
 
-        // Setting the Edge with the given input details to 0 (removing the edge)
-        if (edgeDetails[0] < graph_data.length || edgeDetails[1] < graph_data.length) {
-            graph_data[edgeDetails[0]][edgeDetails[1]] = 0;
-            System.out.println("Edge removed successfully!");
-
-        } else {
-            System.out.println("Your inputs seems to be invalid please try again.");
-        }
+        // Calling the delete edge method from the user option class to perform the operation
+        UserOption.deleteEdge(edgeDetails, graph_data);
     }
 
     // Inserting an edge function
     private static void insertingEdge() {
-
         // Getting an integer array of inputs from the user
         int[] edgeDetails = getEdgeInfo(true);
 
-        // Checking if edge is present and overriding else we normally add the edge
-        if (edgeDetails[0] < graph_data.length || edgeDetails[1] < graph_data.length) {
-            if (graph_data[edgeDetails[0]][edgeDetails[1]] != 0) {
-                graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
-                System.out.println("Edge added successfully!");
+        // Calling the insert edge method from the user option class to perform the operation
+        UserOption.insertEdge(edgeDetails, graph_data);
 
-            } else {
-                graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
-                System.out.println("Overriding edge, since there is an edge already with these inputs");
-                System.out.println("Edge added successfully!");
-
-            }
-        } else {
-            System.out.println("Your inputs seems to be invalid please try again.");
-        }
     }
 
     // Get Inputs related to Edge function
