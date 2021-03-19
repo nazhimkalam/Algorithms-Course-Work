@@ -11,7 +11,7 @@ public class Graph {
         // Starting to create the graph matrix
         int[][] graph_data = new int[matrix_size][matrix_size];
 
-        System.out.println("Converting graph data into a 2D matrix representation (Adjacent Matrix)...");
+        System.out.println(" Converting graph data into a 2D matrix representation (Adjacent Matrix)...");
         // Initializing all the elements of the graph in the 2D array with the value 0
         for (int row = 0; row < matrix_size; row++) {
             for (int column = 0; column < matrix_size; column++) {

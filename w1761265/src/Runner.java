@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Runner {
     // Input path for the data input file
-    private static final String INPUT_FILE_PATH = "inputData/bridge_1.txt";
+    private static final String INPUT_FILE_PATH = "inputData/data.txt";
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
@@ -24,31 +24,31 @@ public class Runner {
         // Stopwatch to start and end the timer to get the time taken for completion
         Stopwatch timer = new Stopwatch();
 
-        System.out.println("================================");
+        System.out.println(" <><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
         // Making sure that graph data is present to proceed
         if (graph_data != null) {
 
             // Viewing the created matrix (if necessary)
-            System.out.println("\n> This is the Adjacent Matrix for a given Graph <\n");
+            System.out.println(" > This is the Adjacent Matrix for a given Graph <\n");
             viewingGraphMatrix(graph_data);
             System.out.println();
 
             // Displaying the result to the user by calling the ford fulkerson algorithm
-            System.out.println("The maximum generated flow is " + FordFulkerson.fordFulkerson(graph_data, 0,
+            System.out.println(" The maximum generated flow is " + FordFulkerson.fordFulkerson(graph_data, 0,
                     graph_data.length - 1));
 
             // Displaying out the time taken to complete the algorithm
-            System.out.println("Elapsed time = " + timer.elapsedTime());
+            System.out.println(" Elapsed time = " + timer.elapsedTime());
 
             // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
-            System.out.println("\n| MAIN MENU" +
-                    "\n| Enter " +
-                    "\n| (1) Insert an Edge, " +
-                    "\n| (2) Delete an Edge, " +
-                    "\n| (3) Insert a Node, " +
-                    "\n| (4) Delete a Node, " +
-                    "\n| (any other key) to quit the program.");
-            System.out.print("\n Enter your option: ");
+            System.out.println("\n | MAIN MENU ----------->" +
+                    "\n | Enter " +
+                    "\n | (1) Insert an Edge, " +
+                    "\n | (2) Delete an Edge, " +
+                    "\n | (3) Insert a Node, " +
+                    "\n | (4) Delete a Node, " +
+                    "\n | (any other key) to quit the program.");
+            System.out.print("\n = Enter your option: ");
             Scanner input = new Scanner(System.in);
 
             // Getting the user option
@@ -72,7 +72,7 @@ public class Runner {
                 deletingNode();
 
             } else {
-                System.out.println("Quitting the program...");
+                System.out.println(" Quitting the program...");
                 System.exit(200);
             }
 
@@ -85,11 +85,11 @@ public class Runner {
     private static void deletingNode() {
 
         // Getting the node number to be deleted from the user via the console
-        int deleteNode = validatingIntegers(" Enter the node you wish to delete from the current graph (Positive Integer)");
+        int deleteNode = validatingIntegers(" Enter the node you wish to delete from the current graph (Positive Integer): ");
 
         // Validating for positive inputs
         while (deleteNode < 0){
-            deleteNode = validatingIntegers(" Enter the node you wish to delete from the current graph (Positive Integer)");
+            deleteNode = validatingIntegers(" Enter the node you wish to delete from the current graph (Positive Integer): ");
         }
 
         // Calling the delete node method to delete an existing node from the graph
@@ -112,6 +112,7 @@ public class Runner {
     // method used to print out the graph matrix
     private static void viewingGraphMatrix(int[][] graph_data) {
         for (int[] data_row : graph_data) {
+            System.out.print("\t");
             for (int j = 0; j < graph_data.length; j++) {
                 System.out.print(data_row[j] + " ");
             }
@@ -140,24 +141,24 @@ public class Runner {
     // A function to get inputs related to Edge
     private static int[] getEdgeInfo(boolean insertingEdge) {
 
-        int from_node = validatingIntegers("Enter the 'from' node value (Positive Integers expected): ");
+        int from_node = validatingIntegers(" Enter the 'from' node value (Positive Integers expected): ");
         // Positive Integer Validation
         while(from_node < 0){
             from_node = validatingIntegers(" Enter the 'from' node value (Positive Integers expected): ");
         }
 
-        int to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected):");
+        int to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected): ");
         // Positive Integer Validation
         while(to_node < 0){
-            to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected):");
+            to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected): ");
         }
 
         if (insertingEdge) {
-            int capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected):");
+            int capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected): ");
 
             // Positive Integer Validation
             while(capacity_value < 0){
-                capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected):");
+                capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected): ");
             }
 
             return new int[]{from_node, to_node, capacity_value};
@@ -175,7 +176,7 @@ public class Runner {
             // we get the user input and check if the user has entered a valid integer or not and then validate asking
             // integer input again until condition satisfied
             System.out.println("\n Invalid input, please enter a valid positive integer!");
-            System.out.print(message);
+            System.out.print(" " + message);
             input.next();
         }
         return input.nextInt();

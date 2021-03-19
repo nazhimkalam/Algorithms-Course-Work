@@ -8,7 +8,7 @@ public class BFS {
     // It also fills parent[] array to store the path
     public static boolean bfs(int[][] Graph, int source, int target, int[] parent, int tot_Vertex) {
 
-        System.out.println("Performing BFS (Breadth-first search)...");
+        System.out.println(" Performing BFS (Breadth-first search)...");
 
         // Creating and Initializing the visited array with 'false' indicated all vertices aren't visited initially.
         boolean[] visited = new boolean[tot_Vertex];

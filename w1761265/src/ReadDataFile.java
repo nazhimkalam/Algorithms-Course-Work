@@ -12,7 +12,7 @@ public class ReadDataFile {
 
         // This block of code is used to read the data from the input file
         // Also add every sentence one by one into the collection (inputData)
-        System.out.println("Reading data from file...");
+        System.out.println(" Reading data from file...");
         try {
             File myObj = new File(filePath);
             Scanner myReader = new Scanner(myObj);
@@ -22,8 +22,8 @@ public class ReadDataFile {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            System.out.println("File not found!");
+            System.out.println(" An error occurred.");
+            System.out.println(" File not found!");
         }
 
         return inputData;
