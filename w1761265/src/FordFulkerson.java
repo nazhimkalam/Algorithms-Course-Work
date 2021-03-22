@@ -1,4 +1,9 @@
-import java.util.LinkedList;
+/*
+ *   Name: Nazhim Kalam
+ *   Student ID:2019281
+ *   UoW: w1761265
+ *   Algorithms - Coursework 01
+ */
 
 // Ford Fulkerson Algorithm used to find the maximum flow of a Graph
 public class FordFulkerson {

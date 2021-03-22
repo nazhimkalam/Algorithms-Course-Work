@@ -1,3 +1,10 @@
+/*
+ *   Name: Nazhim Kalam
+ *   Student ID:2019281
+ *   UoW: w1761265
+ *   Algorithms - Coursework 01
+ */
+
 import java.util.LinkedList;
 
 // This class is used to perform BFS (Breadth First Search on given Graph data)

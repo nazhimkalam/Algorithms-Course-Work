@@ -1,3 +1,9 @@
+/*
+ *   Name: Nazhim Kalam
+ *   Student ID:2019281
+ *   UoW: w1761265
+ *   Algorithms - Coursework 01
+ */
 
 // This class contains methods which represent the user options
 public class UserOption {
