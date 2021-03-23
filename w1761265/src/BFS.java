@@ -13,7 +13,7 @@ public class BFS {
     // Using BFS as the searching algorithm (Breadth-first search)
     // This function returns "true" if there is a path from source 's' to sink 't' in the residual graph.
     // It also fills parent[] array to store the path
-    public static boolean bfs(int[][] Graph, int source, int target, int[] parent, int tot_Vertex) {
+    public static boolean bfs(int[][] Graph, int source, int target, int[] parent_arr, int tot_Vertex) {
 
         System.out.println(" Performing BFS (Breadth-first search)...");
 
@@ -27,7 +27,8 @@ public class BFS {
         LinkedList<Integer> queue = new LinkedList<>();
         queue.add(source);
         visited[source] = true;  // source is always visited at the beginning
-        parent[source] = -1;    // -1 is never given to a node, it's used to identify that there's no node before the source node
+        parent_arr[source] = -1;    // -1 is never given to a node, it's used to identify that there's no node
+                                // before the source node
 
         // This is the normal standard BFS (Breadth-first search) Loop
         while (queue.size() != 0) {
@@ -42,7 +43,7 @@ public class BFS {
                     // if a capacity exists outward from a node
 
                     queue.add(y_index);         // adding all the nodes into the queue in increasing order of end node
-                    parent[y_index] = x_index;  // stores the node before node v (which is node u) at the index v
+                    parent_arr[y_index] = x_index;  // stores the node before node v (which is node u) at the index v
                     visited[y_index] = true;    // marking the node which was just added to the queue as visited
                 }
             }

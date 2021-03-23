@@ -96,7 +96,7 @@ public class FordFulkerson {
 // - For this we can use either BFS ot DFS to the residual graph.
 // - BFS is used here because it promises to find the shortest possible path with the maximum flow where DFS doesn't.
 // - So using BFS we can find the shortest path from source to sink.
-// - BFS makes use of the parent[] array to store the found paths.
+// - BFS makes use of the parent_arr[] array to store the found paths.
 // - We now traverse through the found path and find possible flow through this path by finding minimum residual capacity,
 //   along the path.
 // - Once we get the found path with the flow capacity we add it to the overall flow.

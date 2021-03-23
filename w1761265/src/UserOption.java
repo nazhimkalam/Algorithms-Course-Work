@@ -11,6 +11,7 @@ public class UserOption {
     // Insert Node
     public static int[][] insertNode(int[][] graph){
 
+        // Setting up a new graph to update with the new set of values
         int newGraphSize = graph.length + 1;
         int[][] updatedGraph = new int[newGraphSize][newGraphSize];
 
@@ -23,6 +24,7 @@ public class UserOption {
         // Output message and returning the updated new graph
         System.out.println(" Inserted a New Node Successful!");
 
+        // returns the updated graph
         return updatedGraph;
     }
 
@@ -30,21 +32,20 @@ public class UserOption {
     // the node is still present but not connected with in the graph with the other nodes, hence its considered as removed)
     public static void deleteNode(int deleteNode, int[][] graph){
 
-        if(!(deleteNode > graph.length-1)){
-            for (int rowData = 0; rowData < graph.length; rowData++) {
-                if(rowData == deleteNode){
-                    // Removing all the edges from the deleteNode to the other nodes in direction
-                    for (int colData = 0; colData < graph.length; colData++) {
-                        graph[rowData][colData] = 0;
-                    }
-                }
+        // Checking if the node is present and then deleting the respective node from the graph
+        if(!(deleteNode > graph.length-1 || deleteNode < 0)){
 
-                // Removing edges from other node to the delete node in direction
-                graph[rowData][deleteNode] = 0;
+            // we are settings all the edges related to the deleting node to 0.
+            for (int colData = 0; colData < graph.length; colData++) {
+                graph[deleteNode][colData] = 0;
+                graph[colData][deleteNode] = 0;
             }
-            System.out.println(" Node removed successfully!");
+
+            // Success Message
+            System.out.println(" Node removed successfully from the graph (by isolating the node)!");
 
         }else{
+            // When user enters an invalid node to be deleted
             System.out.println(" You have entered an invalid node which is not present in the graph to be deleted!");
         }
 
@@ -54,11 +55,13 @@ public class UserOption {
     public static void deleteEdge(int[] edgeDetails, int[][] graph_data){
 
         // Setting the Edge with the given input details to 0 (removing the edge)
-        if (edgeDetails[0] < graph_data.length && edgeDetails[1] < graph_data.length) {
+        if ((edgeDetails[0] < graph_data.length && edgeDetails[0] > -1) &&
+                (edgeDetails[1] < graph_data.length  && edgeDetails[1] > -1)) {
             graph_data[edgeDetails[0]][edgeDetails[1]] = 0;
             System.out.println(" Edge removed successfully!");
 
         } else {
+            // If invalid edges, displays another output to the user
             System.out.println(" Your inputs seems to be invalid please try again.");
         }
 
@@ -67,19 +70,24 @@ public class UserOption {
     // Insert Edge Method
     public static void insertEdge(int[] edgeDetails, int[][] graph_data){
 
-        // Checking if edge is present and overriding else we normally add the edge
-        if (edgeDetails[0] < graph_data.length && edgeDetails[1] < graph_data.length) {
-            if (graph_data[edgeDetails[0]][edgeDetails[1]] != 0) {
+        // Checking if it is a valid edge
+        if ((edgeDetails[0] < graph_data.length && edgeDetails[0] > -1) &&
+                (edgeDetails[1] < graph_data.length  && edgeDetails[1] > -1)) {
+
+            // Adding a new edge to the graph
+            if (graph_data[edgeDetails[0]][edgeDetails[1]] == 0) {
                 graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
                 System.out.println(" Edge added successfully!");
 
             } else {
+                // If there is an edge already present, then we override that particular edge itself
                 graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
                 System.out.println(" Overriding edge, since there is an edge already with these inputs");
                 System.out.println(" Edge added successfully!");
 
             }
         } else {
+            // When user enters invalid edge numbers
             System.out.println(" Your inputs seems to be invalid please try again.");
         }
     }
