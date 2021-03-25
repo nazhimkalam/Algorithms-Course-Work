@@ -1,9 +1,9 @@
 /*
-*   Name: Nazhim Kalam
-*   Student ID:2019281
-*   UoW: w1761265
-*   Algorithms - Coursework 01
-*/
+   Name: Nazhim Kalam
+   Student ID:2019281
+   UoW: w1761265
+   Algorithms - Coursework 01
+ */
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -178,8 +178,8 @@ public class Runner {
         System.out.print(message);
         while (!input.hasNextInt()) {
 
-            // we get the user input and check if the user has entered a valid integer or not and then validate asking
-            // integer input again until condition satisfied
+            /* we get the user input and check if the user has entered a valid integer or not and then validate asking
+               integer input again until condition satisfied */
             System.out.println("\n Invalid input, please enter a valid positive integer!");
             System.out.print(" " + message);
             input.next();
@@ -202,28 +202,32 @@ public class Runner {
     }
 }
 
-// Time Taken (Repeat 3 times and get the average time)
-// bridge_1.txt  --> (0.001, 0.001, 0.002)  ---> max flows: 2
-// bridge_2.txt  --> (0.003, 0.005, 0.004)  ---> max flows: 2
-// bridge_3.txt  --> (0.015, 0.006, 0.004)  ---> max flows: 2
-// bridge_4.txt  --> (0.015, 0.010, 0.016)  ---> max flows: 2
-// bridge_5.txt  --> (0.016, 0.015, 0.015)  ---> max flows: 2
-// bridge_6.txt  --> (0.063, 0.08, 0.068)  ---> max flows:  2
-// bridge_7.txt  --> (0.188, 0.187, 0.195)  ---> max flows: 2
-// bridge_8.txt  --> (0.62, 0.566, 1.032)  ---> max flows:  2
-// bridge_9.txt  --> (3.213, 4.223, 3.855)  ---> max flows: 2
+/*
 
-// ladder_1.txt  --> (0.0, 0.001, 0.001)  ---> max flows:  4
-// ladder_2.txt  --> (0.015, 0.016, 0.016)  ---> max flows:7
-// ladder_3.txt  --> (0.01, 0.01, 0.015)  ---> max flows:  13
-// ladder_4.txt  --> (0.015, 0.015, 0.037)  ---> max flows:25
-// ladder_5.txt  --> (0.051, 0.061, 0.062)  ---> max flows:49
-// ladder_6.txt  --> (0.535, 0.12, 0.139)  ---> max flows: 97
-// ladder_7.txt  --> (0.685, 0.473, 0.716)  ---> max flows:193
-// ladder_8.txt  --> (2.758, 2.948, 3.333)  ---> max flows:385
-// ladder_9.txt  --> (11.457, 11.64, 12.707)  ---> max flows:769
+ Time Taken (Repeat 3 times and get the average time)
+ bridge_1.txt  --> (0.001, 0.001, 0.002)  ---> max flows: 2
+ bridge_2.txt  --> (0.003, 0.005, 0.004)  ---> max flows: 2
+ bridge_3.txt  --> (0.015, 0.006, 0.004)  ---> max flows: 2
+ bridge_4.txt  --> (0.015, 0.010, 0.016)  ---> max flows: 2
+ bridge_5.txt  --> (0.016, 0.015, 0.015)  ---> max flows: 2
+ bridge_6.txt  --> (0.063, 0.08, 0.068)  ---> max flows:  2
+ bridge_7.txt  --> (0.188, 0.187, 0.195)  ---> max flows: 2
+ bridge_8.txt  --> (0.62, 0.566, 1.032)  ---> max flows:  2
+ bridge_9.txt  --> (3.213, 4.223, 3.855)  ---> max flows: 2
 
-// References used
-// https://www.programiz.com/dsa/ford-fulkerson-algorithm
-// https://www.youtube.com/watch?v=5hPfm_uqXmw&list=PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU&index=81
-// https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c
+ ladder_1.txt  --> (0.0, 0.001, 0.001)  ---> max flows:  4
+ ladder_2.txt  --> (0.015, 0.016, 0.016)  ---> max flows:7
+ ladder_3.txt  --> (0.01, 0.01, 0.015)  ---> max flows:  13
+ ladder_4.txt  --> (0.015, 0.015, 0.037)  ---> max flows:25
+ ladder_5.txt  --> (0.051, 0.061, 0.062)  ---> max flows:49
+ ladder_6.txt  --> (0.535, 0.12, 0.139)  ---> max flows: 97
+ ladder_7.txt  --> (0.685, 0.473, 0.716)  ---> max flows:193
+ ladder_8.txt  --> (2.758, 2.948, 3.333)  ---> max flows:385
+ ladder_9.txt  --> (11.457, 11.64, 12.707)  ---> max flows:769
+
+ References used
+ https://www.programiz.com/dsa/ford-fulkerson-algorithm
+ https://www.youtube.com/watch?v=5hPfm_uqXmw&list=PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU&index=81
+ https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c
+
+ */

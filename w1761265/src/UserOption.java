@@ -1,8 +1,8 @@
 /*
- *   Name: Nazhim Kalam
- *   Student ID:2019281
- *   UoW: w1761265
- *   Algorithms - Coursework 01
+   Name: Nazhim Kalam
+   Student ID:2019281
+   UoW: w1761265
+   Algorithms - Coursework 01
  */
 
 // This class contains methods which represent the user options
@@ -15,8 +15,8 @@ public class UserOption {
         int newGraphSize = graph.length + 1;
         int[][] updatedGraph = new int[newGraphSize][newGraphSize];
 
-        // Creating a copy of the data from the previous graph and
-        // adding the other node and initializing the new node added edges (weights) to 0
+        /* Creating a copy of the data from the previous graph and
+           adding the other node and initializing the new node added edges (weights) to 0 */
         for (int rowData = 0; rowData < graph.length; rowData++) {
             System.arraycopy(graph[rowData], 0, updatedGraph[rowData], 0, graph.length);
         }
@@ -28,8 +28,8 @@ public class UserOption {
         return updatedGraph;
     }
 
-    // Delete Node (We are only removing all its edge of the node which has to be deleted which also means that
-    // the node is still present but not connected with in the graph with the other nodes, hence its considered as removed)
+    /* Delete Node (We are only removing all its edge of the node which has to be deleted which also means that
+       the node is still present but not connected with in the graph with the other nodes, hence its considered as removed) */
     public static void deleteNode(int deleteNode, int[][] graph){
 
         // Checking if the node is present and then deleting the respective node from the graph

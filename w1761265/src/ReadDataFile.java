@@ -1,8 +1,8 @@
 /*
- *   Name: Nazhim Kalam
- *   Student ID:2019281
- *   UoW: w1761265
- *   Algorithms - Coursework 01
+   Name: Nazhim Kalam
+   Student ID:2019281
+   UoW: w1761265
+   Algorithms - Coursework 01
  */
 
 import java.io.File;
@@ -17,8 +17,8 @@ public class ReadDataFile {
         // Stores collection of lines from the input file
         ArrayList<String> inputData = new ArrayList<>();
 
-        // This block of code is used to read the data from the input file
-        // Also add every sentence one by one into the collection (inputData)
+        /* This block of code is used to read the data from the input file
+           Also add every sentence one by one into the collection (inputData) */
         System.out.println(" Reading data from file...");
         try {
             File myObj = new File(filePath);
