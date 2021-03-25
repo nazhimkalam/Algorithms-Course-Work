@@ -28,14 +28,22 @@ public class Graph {
 
         // Adding the edge data values to the respective positions in the 2D matrix
         for (int item = 1; item < inputData.size(); item++) {
+            // Extracting the data to create the graph
             String[] split_data = inputData.get(item).split(" ");
             int x_index = Integer.parseInt(split_data[0].trim());
             int y_index = Integer.parseInt(split_data[1].trim());
             int value = Integer.parseInt(split_data[2].trim());
 
-            graph_data[x_index][y_index] = value;
+            // Adding edge
+            addEdge(x_index, y_index, value, graph_data);
         }
         return graph_data;
     }
+
+    // Adding edge to the graph
+    private static void addEdge(int x_index, int y_index, int value, int[][] graph_data) {
+        graph_data[x_index][y_index] = value;
+    }
+
 
 }
