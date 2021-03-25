@@ -5,6 +5,8 @@
    Algorithms - Coursework 01
  */
 
+import java.util.Arrays;
+
 // Ford Fulkerson Algorithm used to find the maximum flow of a Graph
 public class FordFulkerson {
     public static int tot_Vertex;
@@ -28,20 +30,18 @@ public class FordFulkerson {
                 resGraph[u][v] = data[u][v];
             }
         }
-        System.out.println(" Creating the residual graph...");
+        System.out.println(" Creating the residual graph... ");
 
         /* The parent_arr is used to store the found path and is filled by BFS
            initialized with tot_Vertex because the max path can have all the number of vertices in the graph
            (same node can't be visited more than once) */
         int[] parent_arr = new int[tot_Vertex];
 
-
         // Initially we set the flow to 0, because there is no flow initially
         int maximum_flow = 0;
 
         // Updating the residual values of edges by augmenting the flow while there is a path from source to sink.
         while (BFS.bfs(resGraph, source, target, parent_arr, tot_Vertex)) {
-            System.out.println(" --->");
 
             /* By using BFS we are finding the (minimum residual capacity) of the edges along the path which can be
                filled with. */
@@ -56,6 +56,7 @@ public class FordFulkerson {
                 path_flow = Math.min(path_flow, resGraph[u][v]);
             }
 
+            System.out.println(" The bottleneck value from the residual graph found is = " + path_flow);
             System.out.println(" Updating the residual capacities of the edges...");
 
             // Updating the residual capacities of the edges and also reversing the edges along the path.
@@ -69,14 +70,14 @@ public class FordFulkerson {
                 resGraph[v][u] += path_flow;
             }
 
-            System.out.println(" Path flow value found equal to " + path_flow);
 
             // Adding the path flows to the overall flow
             maximum_flow += path_flow;
             System.out.println(" Adding the path flows to the overall flow...");
+            System.out.println(" Updating the maximum flow to = " + maximum_flow);
 
         }
-        System.out.println(" --->");
+        System.out.println();
 
         // Returning the overall flow, which is also the maximum flow of the graph
         return String.valueOf(maximum_flow);

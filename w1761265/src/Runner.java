@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Runner {
     // Input path for the data input file
-    private static final String INPUT_FILE_PATH = "inputData/ladder_4.txt";
+    private static final String INPUT_FILE_PATH = "inputData/data.txt";
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
@@ -29,12 +29,12 @@ public class Runner {
         // Stopwatch to start and end the timer to get the time taken for completion
         Stopwatch timer = new Stopwatch();
 
-        System.out.println(" <><><><><><><><><><><><><><><><><><><><><><><><><><><><> ");
+        System.out.println();
         // Making sure that graph data is present to proceed
         if (graph_data != null) {
 
             // Viewing the created matrix (if necessary)
-            System.out.println(" > This is the Adjacent Matrix for a given Graph <\n");
+            System.out.println(" = This is the Adjacent Matrix for a given Graph \n");
             viewingGraphMatrix(graph_data);
             System.out.println();
 
@@ -46,7 +46,7 @@ public class Runner {
             System.out.println(" Elapsed time = " + timer.elapsedTime());
 
             // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
-            System.out.println("\n | MAIN MENU ----------->" +
+            System.out.println("\n * MAIN MENU *" +
                     "\n | Enter " +
                     "\n | (1) Insert an Edge, " +
                     "\n | (2) Delete an Edge, " +
@@ -116,13 +116,23 @@ public class Runner {
 
     // method used to print out the graph matrix
     private static void viewingGraphMatrix(int[][] graph_data) {
+        int edge_count = 0;
         for (int[] data_row : graph_data) {
             System.out.print("\t");
-            for (int j = 0; j < graph_data.length; j++) {
-                System.out.print(data_row[j] + " ");
+            for (int index = 0; index< graph_data.length; index++) {
+                // incrementing edge value
+                if(data_row[index] > 0){
+                    edge_count++;
+                }
+
+                System.out.print(data_row[index] + " ");
             }
             System.out.println();
         }
+
+        System.out.println("\n = Total Number of Nodes present: " + graph_data.length);
+        System.out.println(" = Total Number of Edges present: " + edge_count);
+
     }
 
     // Deleting an edge from your current graph
