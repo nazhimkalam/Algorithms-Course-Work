@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Runner {
     // Input path for the data input file
-    private static final String INPUT_FILE_PATH = "inputData/ladder_1.txt";
+    private static final String INPUT_FILE_PATH = "inputData/ladder_2.txt";
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
