@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Runner {
     // Input path for the data input file
-    private static final String INPUT_FILE_PATH = "inputData/data.txt";
+    private static final String INPUT_FILE_PATH = "inputData/ladder_1.txt";
 
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
@@ -132,6 +132,8 @@ public class Runner {
 
         System.out.println("\n = Total Number of Nodes present: " + graph_data.length);
         System.out.println(" = Total Number of Edges present: " + edge_count);
+        System.out.println(" = The Source Node is: 0");
+        System.out.println(" = The Target Node is: " + (graph_data.length - 1));
 
     }
 
@@ -239,5 +241,5 @@ public class Runner {
  https://www.programiz.com/dsa/ford-fulkerson-algorithm
  https://www.youtube.com/watch?v=5hPfm_uqXmw&list=PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU&index=81
  https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c
-
+ https://medium.com/@jithmisha/solving-the-maximum-flow-problem-with-ford-fulkerson-method-3fccc2883dc7
  */
