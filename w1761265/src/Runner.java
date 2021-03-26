@@ -222,9 +222,9 @@ public class Runner {
  bridge_3.txt  --> (0.015, 0.006, 0.004)  ---> max flows: 2
  bridge_4.txt  --> (0.015, 0.010, 0.016)  ---> max flows: 2
  bridge_5.txt  --> (0.016, 0.015, 0.015)  ---> max flows: 2
- bridge_6.txt  --> (0.063, 0.08, 0.068)  ---> max flows:  2
+ bridge_6.txt  --> (0.063, 0.08, 0.068)   ---> max flows:  2
  bridge_7.txt  --> (0.188, 0.187, 0.195)  ---> max flows: 2
- bridge_8.txt  --> (0.62, 0.566, 1.032)  ---> max flows:  2
+ bridge_8.txt  --> (0.62, 0.566, 1.032)   ---> max flows:  2
  bridge_9.txt  --> (3.213, 4.223, 3.855)  ---> max flows: 2
 
  ladder_1.txt  --> (0.0, 0.001, 0.001)  ---> max flows:  4
