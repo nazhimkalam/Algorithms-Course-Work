@@ -1,8 +1,8 @@
 /*
-   Name: Nazhim Kalam
-   Student ID:2019281
-   UoW: w1761265
-   Algorithms - Coursework 01
+ *  Name: Nazhim Kalam
+ *  Student ID:2019281
+ *  UoW: w1761265
+ *  Algorithms - Coursework 01
  */
 
 import java.io.File;
@@ -29,6 +29,7 @@ public class ReadDataFile {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
+            // Exception Occurred
             System.out.println(" An error occurred.");
             System.out.println(" File not found!");
         }

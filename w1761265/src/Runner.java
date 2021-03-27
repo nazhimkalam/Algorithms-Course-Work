@@ -1,9 +1,9 @@
 /*
-*  Name: Nazhim Kalam
-*  Student ID:2019281
-*  UoW: w1761265
-*  Algorithms - Coursework 01
-*/
+ *  Name: Nazhim Kalam
+ *  Student ID:2019281
+ *  UoW: w1761265
+ *  Algorithms - Coursework 01
+ */
 
 /*
 *   Important Note
@@ -40,7 +40,7 @@ public class Runner {
         if (graph_data != null) {
 
             // Viewing the created matrix (if necessary)
-            System.out.println(" = This is the Adjacent Matrix for a given Graph \n");
+            System.out.println(" This is the Adjacent Matrix of the Current Graph \n");
             Graph.visualizeGraph(graph_data);
             System.out.println();
 
@@ -49,7 +49,7 @@ public class Runner {
                     graph_data.length - 1));
 
             // Displaying out the time taken to complete the algorithm
-            System.out.println(" Elapsed time = " + timer.elapsedTime());
+            System.out.println(" Elapsed time (Time taken) = " + timer.elapsedTime() + " seconds");
 
             // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
             System.out.println("\n * MAIN MENU *" +
@@ -160,7 +160,6 @@ public class Runner {
             while(capacity_value < 0){
                 capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected): ");
             }
-
             return new int[]{from_node, to_node, capacity_value};
         }
 
@@ -225,4 +224,5 @@ public class Runner {
  https://www.youtube.com/watch?v=5hPfm_uqXmw&list=PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU&index=81
  https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c
  https://medium.com/@jithmisha/solving-the-maximum-flow-problem-with-ford-fulkerson-method-3fccc2883dc7
+
  */

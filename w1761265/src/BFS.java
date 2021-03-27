@@ -1,8 +1,8 @@
 /*
-   Name: Nazhim Kalam
-   Student ID:2019281
-   UoW: w1761265
-   Algorithms - Coursework 01
+ *  Name: Nazhim Kalam
+ *  Student ID:2019281
+ *  UoW: w1761265
+ *  Algorithms - Coursework 01
  */
 
 import java.util.ArrayList;
@@ -58,6 +58,7 @@ public class BFS {
         /* If there is an augmenting path from the source to the sink then we display the found path */
         ArrayList<Integer> augmentingPath = new ArrayList<>();
         if(visited[target]){
+            // Creating the Augmenting path pattern to be displayed to the console
             for (int vertex = target; vertex != source; vertex = parent_arr[vertex]) {
                 augmentingPath.add(vertex);
             }

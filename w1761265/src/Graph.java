@@ -1,10 +1,9 @@
 /*
-   Name: Nazhim Kalam
-   Student ID:2019281
-   UoW: w1761265
-   Algorithms - Coursework 01
+ *  Name: Nazhim Kalam
+ *  Student ID:2019281
+ *  UoW: w1761265
+ *  Algorithms - Coursework 01
  */
-
 import java.util.ArrayList;
 
 // This class is used to Generate an Adjacent Matrix for a given Graph

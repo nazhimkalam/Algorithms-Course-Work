@@ -1,10 +1,9 @@
 /*
-   Name: Nazhim Kalam
-   Student ID:2019281
-   UoW: w1761265
-   Algorithms - Coursework 01
+ *  Name: Nazhim Kalam
+ *  Student ID:2019281
+ *  UoW: w1761265
+ *  Algorithms - Coursework 01
  */
-
 
 // Ford Fulkerson Algorithm used to find the maximum flow of a Graph
 public class FordFulkerson {
@@ -17,7 +16,7 @@ public class FordFulkerson {
         tot_Vertex = target + 1;    //Total Number of vertices the flow network
         int u;                      // starting node
         int v;                      // ending node
-        int[][] resGraph = new int[tot_Vertex][tot_Vertex];   // initializing residual graph
+        int[][] residualGraph = new int[tot_Vertex][tot_Vertex];   // initializing residual graph
 
         /* We are creating a residual graph by filling the residual graph with the given capacities from the
            original graph.
@@ -26,7 +25,7 @@ public class FordFulkerson {
         */
         for (u = 0; u < tot_Vertex; u++) {
             for (v = 0; v < tot_Vertex; v++) {
-                resGraph[u][v] = data[u][v];
+                residualGraph[u][v] = data[u][v];
             }
         }
         System.out.println(" Creating the residual graph... ");
@@ -40,11 +39,11 @@ public class FordFulkerson {
         int maximum_flow = 0;
 
         // Updating the residual values of edges by augmenting the flow while there is a path from source to sink.
-        while (BFS.bfs(resGraph, source, target, parent_arr, tot_Vertex)) {
+        while (BFS.bfs(residualGraph, source, target, parent_arr, tot_Vertex)) {
 
             /* By using BFS we are finding the (minimum residual capacity) of the edges along the path which can be
                filled with. */
-            System.out.println(" Finding the minimum residual capacity...");
+            System.out.println(" Finding the minimum residual capacity (bottleneck capacity)...");
             int path_flow = Integer.MAX_VALUE;
             // assigning the maximum value an integer possible - because minimum residual capacity is needed to be found
 
@@ -52,10 +51,10 @@ public class FordFulkerson {
                 u = parent_arr[v];
 
                 // getting the minimum value out of path_flow and rGraph[u][v] (capacity of edge in residual graph)
-                path_flow = Math.min(path_flow, resGraph[u][v]);
+                path_flow = Math.min(path_flow, residualGraph[u][v]);
             }
 
-            System.out.println(" The bottleneck value from the residual graph found is = " + path_flow);
+            System.out.println(" The bottleneck capacity value from the residual graph found is : " + path_flow);
             System.out.println(" Updating the residual capacities of the edges...");
 
             // Updating the residual capacities of the edges and also reversing the edges along the path.
@@ -63,10 +62,10 @@ public class FordFulkerson {
                 u = parent_arr[v];
 
                 // decreasing capacity from the flow sent; to get the residual capacity (forward direction)
-                resGraph[u][v] -= path_flow;
+                residualGraph[u][v] -= path_flow;
 
                 // adding the flow sent to the reverse capacity; to get the residual capacity (backward direction)
-                resGraph[v][u] += path_flow;
+                residualGraph[v][u] += path_flow;
             }
 
 
