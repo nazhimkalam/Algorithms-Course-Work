@@ -30,24 +30,37 @@ public class UserOption {
 
     /* Delete Node (We are only removing all its edge of the node which has to be deleted which also means that
        the node is still present but not connected with in the graph with the other nodes, hence its considered as removed) */
-    public static void deleteNode(int deleteNode, int[][] graph){
+    public static int[][] deleteNode(int deleteNode, int[][] graph){
 
         // Checking if the node is present and then deleting the respective node from the graph
         if(!(deleteNode > graph.length-1 || deleteNode < 0)){
 
-            // we are settings all the edges related to the deleting node to 0.
-            for (int colData = 0; colData < graph.length; colData++) {
-                graph[deleteNode][colData] = 0;
-                graph[colData][deleteNode] = 0;
-            }
+            if(deleteNode == (graph.length - 1)){
+                // This means we are deleting the last node from the graph
+                int[][] updated_graph = new int[graph.length - 1][graph.length - 1];
 
-            // Success Message
-            System.out.println(" Node removed successfully from the graph (by isolating the node)!");
+                for (int row = 0; row < graph.length - 1; row++) {
+                    System.arraycopy(graph[row], 0, updated_graph[row], 0, graph.length - 1);
+                }
+                return updated_graph;
+            }else{
+                // we are settings all the edges related to the deleting node to 0.
+                for (int colData = 0; colData < graph.length; colData++) {
+                    graph[deleteNode][colData] = 0;
+                    graph[colData][deleteNode] = 0;
+                }
+
+                // Success Message
+                System.out.println(" Node removed successfully from the graph (by isolating the node)!");
+
+                return graph;
+            }
 
         }else{
             // When user enters an invalid node to be deleted
             System.out.println(" You have entered an invalid node which is not present in the graph to be deleted!");
         }
+        return graph;
 
     }
 

@@ -5,7 +5,6 @@
    Algorithms - Coursework 01
  */
 
-import java.util.Arrays;
 
 // Ford Fulkerson Algorithm used to find the maximum flow of a Graph
 public class FordFulkerson {
