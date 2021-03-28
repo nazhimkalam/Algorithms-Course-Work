@@ -107,7 +107,7 @@ public class Runner {
         graph_data = UserOption.deleteNode(deleteNode, graph_data);
 
         // Updated Graph Data Visualization
-        // Graph.viewingGraphMatrix(graph_data);
+        // Graph.visualizeGraph(graph_data);
 
     }
 
@@ -117,7 +117,7 @@ public class Runner {
         graph_data = UserOption.insertNode(graph_data);
 
         // Updated Graph Data Visualization
-        // Graph.viewingGraphMatrix(graph_data);
+        // Graph.visualizeGraph(graph_data);
     }
 
     // Deleting an edge from your current graph

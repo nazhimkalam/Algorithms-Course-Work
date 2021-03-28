@@ -28,7 +28,10 @@ public class FordFulkerson {
                 residualGraph[u][v] = data[u][v];
             }
         }
-        System.out.println(" Creating the residual graph... ");
+        System.out.println(" Creating the residual graph... \n");
+
+        // Visualize the Residual Graph
+         Graph.visualizeGraph(residualGraph);
 
         /* The parent_arr is used to store the found path and is filled by BFS
            initialized with tot_Vertex because the max path can have all the number of vertices in the graph
@@ -55,7 +58,7 @@ public class FordFulkerson {
             }
 
             System.out.println(" The bottleneck capacity value from the residual graph found is : " + path_flow);
-            System.out.println(" Updating the residual capacities of the edges...");
+            System.out.println(" Updating the residual capacities of the edges... \n");
 
             // Updating the residual capacities of the edges and also reversing the edges along the path.
             for (v = target; v != source; v = parent_arr[v]) {
@@ -68,6 +71,8 @@ public class FordFulkerson {
                 residualGraph[v][u] += path_flow;
             }
 
+            // Visualize the Updated Residual Graph
+            Graph.visualizeGraph(residualGraph);
 
             // Adding the path flows to the overall flow
             maximum_flow += path_flow;
