@@ -18,30 +18,33 @@ public class Runner {
     // Input path for the data input file
     private static final String INPUT_FILE_PATH = "inputData/data.txt";
 
+    // Creating an instance of the Graph Class
+    private static Graph graphOptions;
+
     // This is a 2D matrix which stores the data of the graph representation
     public static int[][] graph_data;
 
     // MAIN MENU
     public static void main(String[] args) {
         // Reading all data from input file and creating a graph matrix
+        graphOptions = new Graph();
         graph_data = readDataFromFile();
 
         // Calling the Display Menu and Result Function
-        displayMenuAndResult();
+        displayMenu();
     }
 
-    // Display Menu and Result Function
-    private static void displayMenuAndResult() {
+    private static void executeFordFulkerson(){
         // Stopwatch to start and end the timer to get the time taken for completion
         Stopwatch timer = new Stopwatch();
-
         System.out.println();
+
         // Making sure that graph data is present to proceed
         if (graph_data != null) {
 
             // Viewing the created matrix (if necessary)
             System.out.println(" This is the Adjacent Matrix of the Current Graph \n");
-            Graph.visualizeGraph(graph_data);
+            graphOptions.visualizeGraph(graph_data);
             System.out.println();
 
             // Displaying the result to the user by calling the ford fulkerson algorithm
@@ -51,44 +54,75 @@ public class Runner {
             // Displaying out the time taken to complete the algorithm
             System.out.println(" Elapsed time (Time taken) = " + timer.elapsedTime() + " seconds");
 
-            // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
-            System.out.println("\n * MAIN MENU *" +
-                    "\n | Enter " +
-                    "\n | (1) Insert an Edge, " +
-                    "\n | (2) Delete an Edge, " +
-                    "\n | (3) Insert a Node, " +
-                    "\n | (4) Delete a Node, " +
-                    "\n | (any other key) to quit the program.");
-            System.out.print("\n = Enter your option: ");
-            Scanner input = new Scanner(System.in);
+        }
+    }
 
-            // Getting the user option
-            String option = input.nextLine();
 
-            // Handle Conditions
-            if (option.trim().equalsIgnoreCase("1")){
-                // Inserting an edge
-                insertingEdge();
+    // Display Menu and Result Function
+    private static void displayMenu() {
+        // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
+        System.out.println("\n | MAIN MENU ==========>" +
+                "\n | Enter " +
+                "\n | (1) Insert an Edge, " +
+                "\n | (2) Delete an Edge, " +
+                "\n | (3) Insert a Node, " +
+                "\n | (4) Delete a Node, " +
+                "\n | (5) Check if edge exists, " +
+                "\n | (6) Perform max flow finding, " +
+                "\n | (any other key) to quit the program.");
+        System.out.print("\n = Enter your option: ");
+        Scanner input = new Scanner(System.in);
 
-            } else if (option.trim().equalsIgnoreCase("2")){
-                // Deleting an edge
-                deletingEdge();
+        // Getting the user option
+        String option = input.nextLine();
 
-            } else if(option.trim().equalsIgnoreCase("3")){
-                // Inserting a Node
-                insertingNode();
+        // Handle Conditions
+        if (option.trim().equalsIgnoreCase("1")){
+            // Inserting an edge
+            insertingEdge();
 
-            } else if(option.trim().equalsIgnoreCase("4")){
-                // Deleting a Node
-                deletingNode();
+        } else if (option.trim().equalsIgnoreCase("2")){
+            // Deleting an edge
+            deletingEdge();
 
-            } else {
-                System.out.println(" Quitting the program...");
-                System.exit(200);
-            }
+        } else if(option.trim().equalsIgnoreCase("3")){
+            // Inserting a Node
+            insertingNode();
 
-            // Calling the Menu
-            displayMenuAndResult();
+        } else if(option.trim().equalsIgnoreCase("4")){
+            // Deleting a Node
+            deletingNode();
+
+        } else if(option.trim().equalsIgnoreCase("5")){
+            // Checking if an edge is present in between 2 vertices
+            checkingEdge();
+        }
+        else if(option.trim().equalsIgnoreCase("6")){
+            // Performing the max flow finding
+            executeFordFulkerson();
+        }
+        else {
+            System.out.println(" Quitting the program...");
+            System.exit(200);
+        }
+
+        displayMenu();
+    }
+
+    // Checking if an edge is present
+    private static void checkingEdge() {
+        // Getting an integer array of inputs from the user
+        int[] edgeDetails = getEdgeInfo(false);
+
+        // Calling the insert edge method from the user option class to perform the operation
+        boolean edgePresent = graphOptions.existsEdge(edgeDetails[0], edgeDetails[1], graph_data);
+        System.out.println();
+
+        // Displaying result
+        if(edgePresent){
+            System.out.println(" Yes, there is an edge present between the vertex " + edgeDetails[0] + " and " + edgeDetails[1]);
+        }else{
+            System.out.println(" No, there is no edge present between the vertex " + edgeDetails[0] + " and " + edgeDetails[1]);
         }
     }
 
@@ -104,20 +138,15 @@ public class Runner {
         }
 
         // Calling the delete node method to delete an existing node from the graph
-        graph_data = UserOption.deleteNode(deleteNode, graph_data);
-
-        // Updated Graph Data Visualization
-        // Graph.visualizeGraph(graph_data);
+        graph_data = graphOptions.deleteNode(deleteNode, graph_data);
 
     }
 
     // Inserting a Node to your current Graph
     private static void insertingNode() {
         // Calling the insert node method to add a new node automatically in ascending order of the numbers
-        graph_data = UserOption.insertNode(graph_data);
+        graph_data = graphOptions.insertNode(graph_data);
 
-        // Updated Graph Data Visualization
-        // Graph.visualizeGraph(graph_data);
     }
 
     // Deleting an edge from your current graph
@@ -126,7 +155,8 @@ public class Runner {
         int[] edgeDetails = getEdgeInfo(false);
 
         // Calling the delete edge method from the user option class to perform the operation
-        UserOption.deleteEdge(edgeDetails, graph_data);
+        graph_data = graphOptions.deleteEdge(edgeDetails, graph_data);
+
     }
 
     // Inserting an edge from your current graph
@@ -135,7 +165,8 @@ public class Runner {
         int[] edgeDetails = getEdgeInfo(true);
 
         // Calling the insert edge method from the user option class to perform the operation
-        UserOption.insertEdge(edgeDetails, graph_data);
+        graph_data = graphOptions.insertEdge(edgeDetails, graph_data);
+
     }
 
     // A function to get inputs related to Edge
@@ -188,7 +219,7 @@ public class Runner {
 
         if (graphInputData.size() != 0) {
             // Generating the Adjacent Matrix for the Graph
-            return Graph.generateGraph(graphInputData);
+            return graphOptions.generateGraph(graphInputData);
         } else {
             // Returns null if no file found
             return null;

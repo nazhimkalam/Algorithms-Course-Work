@@ -4,13 +4,15 @@
  *  UoW: w1761265
  *  Algorithms - Coursework 01
  */
+
 import java.util.ArrayList;
 
 // This class is used to Generate an Adjacent Matrix for a given Graph
-public class Graph {
+public class Graph extends GraphADT{
 
-    // This method returns the created Adjacent Matrix
-    public static int[][] generateGraph(ArrayList<String> inputData){
+    @Override
+    public int[][] generateGraph(ArrayList<String> inputData) {
+        // This method returns the created Adjacent Matrix
         // Setting the size of the matrix
         int matrix_size = Integer.parseInt(inputData.get(0).trim());
 
@@ -39,14 +41,14 @@ public class Graph {
         return graph_data;
     }
 
-    // Adding edge to the graph
+    // Adding edge to the graph when creating the graph
     private static void addEdge(int x_index, int y_index, int value, int[][] graph_data) {
         graph_data[x_index][y_index] = value;
     }
 
-    // Visualize graph
-    public static void visualizeGraph(int[][] graph_data){
-        // Assuming that we arent dealing with integers greater than 999 as of now
+    @Override
+    public void visualizeGraph(int[][] graph_data) {
+        // Assuming that we aren't dealing with integers greater than 999 as of now (for graph visualization)
 
         // Code for displaying the graph to the console
         int edge_count = 0;
@@ -90,13 +92,126 @@ public class Graph {
             rowCounter++;
         }
 
-        System.out.println("\n = Total Number of Nodes present: " + graph_data.length);
+        System.out.println("\n = Total Number of Nodes/Vertices present: " + graph_data.length);
         System.out.println(" = Total Number of Edges present: " + edge_count);
         System.out.println(" = The Source Node is: 0");
         System.out.println(" = The Target Node is: " + (graph_data.length - 1));
+    }
+
+    @Override
+    public boolean existsEdge(int fromVertex, int toVertex, int[][] graph) {
+        // Checking if an edge is present in between the vertices given by the user
+
+        // Checking for valid vertex entered by the user
+        if ((fromVertex < graph.length && fromVertex > -1) && (toVertex < graph.length  && toVertex > -1)) {
+            // if capacity between 2 vertices are equal to 0, then it means that there is not edge over there
+            // return true if edge present else false if not present
+            return graph[fromVertex][toVertex] != 0;
+        }
+        return false;
 
     }
 
+    @Override
+    public int[][] insertEdge(int[] edgeDetails, int[][] graph_data){
+        // Checking if it is a valid edge
+        if ((edgeDetails[0] < graph_data.length && edgeDetails[0] > -1) &&
+                (edgeDetails[1] < graph_data.length  && edgeDetails[1] > -1)) {
+
+            // Adding a new edge to the graph
+            if (graph_data[edgeDetails[0]][edgeDetails[1]] == 0) {
+                graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
+                System.out.println(" Edge added successfully!");
+
+            } else {
+                // If there is an edge already present, then we override that particular edge itself
+                graph_data[edgeDetails[0]][edgeDetails[1]] = edgeDetails[2];
+                System.out.println(" Overriding edge, since there is an edge already with these inputs");
+                System.out.println(" Edge added successfully!");
+
+            }
+        } else {
+            // When user enters invalid edge numbers
+            System.out.println(" Your inputs seems to be invalid please try again.");
+        }
+        return graph_data;
+    }
+
+    @Override
+    public int[][] deleteEdge(int[] edgeDetails, int[][] graph_data) {
+        // Delete Edge Method
+
+        // Setting the Edge with the given input details to 0 (removing the edge)
+        if ((edgeDetails[0] < graph_data.length && edgeDetails[0] > -1) &&
+                (edgeDetails[1] < graph_data.length  && edgeDetails[1] > -1)) {
+            graph_data[edgeDetails[0]][edgeDetails[1]] = 0;
+            System.out.println(" Edge removed successfully!");
+
+        } else {
+            // If invalid edges, displays another output to the user
+            System.out.println(" Your inputs seems to be invalid please try again.");
+        }
+
+        return graph_data;
+    }
+
+    @Override
+    public int[][] insertNode(int[][] graph) {
+
+        // Setting up a new graph to update with the new set of values
+        int newGraphSize = graph.length + 1;
+        int[][] updatedGraph = new int[newGraphSize][newGraphSize];
+
+        /* Creating a copy of the data from the previous graph and
+           adding the other node and initializing the new node added edges (weights) to 0 */
+        for (int rowData = 0; rowData < graph.length; rowData++) {
+            System.arraycopy(graph[rowData], 0, updatedGraph[rowData], 0, graph.length);
+        }
+
+        // Output message and returning the updated new graph
+        System.out.println(" Inserted a New Node Successful!");
+
+        // returns the updated graph
+        return updatedGraph;
+    }
+
+    @Override
+    public int[][] deleteNode(int deleteNode, int[][] graph) {
+        /* Delete Node (We are only removing all its edge of the node which has to be deleted which also means that
+       the node is still present but not connected with in the graph with the other nodes, hence its considered as removed) */
+
+        // Checking if the node is present and then deleting the respective node from the graph
+        if(!(deleteNode > graph.length-1 || deleteNode < 0)){
+
+            if(deleteNode == (graph.length - 1)){
+                // This means we are deleting the last node from the graph
+                int[][] updated_graph = new int[graph.length - 1][graph.length - 1];
+
+                for (int row = 0; row < graph.length - 1; row++) {
+                    System.arraycopy(graph[row], 0, updated_graph[row], 0, graph.length - 1);
+                }
+                return updated_graph;
+            }else{
+                // we are settings all the edges related to the deleting node to 0.
+                for (int colData = 0; colData < graph.length; colData++) {
+                    graph[deleteNode][colData] = 0;
+                    graph[colData][deleteNode] = 0;
+                }
+
+                // Success Message
+                System.out.println(" Node removed successfully from the graph (by isolating the node)!");
+
+                return graph;
+            }
+
+        }else{
+            // When user enters an invalid node to be deleted
+            System.out.println(" You have entered an invalid node which is not present in the graph to be deleted!");
+        }
+        return graph;
+    }
+
+    // Organising the graph before printing it out
     private static String[][] organiseGraph(int[][] graph_data) {
         String[][] graph_representation = new String[graph_data.length][graph_data.length];
 
@@ -115,6 +230,4 @@ public class Graph {
 
         return graph_representation;
     }
-
-
 }

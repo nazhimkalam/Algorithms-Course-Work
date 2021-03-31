@@ -8,6 +8,7 @@
 // Ford Fulkerson Algorithm used to find the maximum flow of a Graph
 public class FordFulkerson {
     public static int tot_Vertex;
+    public static Graph graphOptions = new Graph();
 
     // Returns tne maximum flow from s to t in the given graph
     public static String fordFulkerson(int[][] data, int source, int target) {
@@ -31,7 +32,7 @@ public class FordFulkerson {
         System.out.println(" Creating the residual graph... \n");
 
         // Visualize the Residual Graph
-         Graph.visualizeGraph(residualGraph);
+        graphOptions.visualizeGraph(residualGraph);
 
         /* The parent_arr is used to store the found path and is filled by BFS
            initialized with tot_Vertex because the max path can have all the number of vertices in the graph
@@ -72,7 +73,7 @@ public class FordFulkerson {
             }
 
             // Visualize the Updated Residual Graph
-            Graph.visualizeGraph(residualGraph);
+            graphOptions.visualizeGraph(residualGraph);
 
             // Adding the path flows to the overall flow
             maximum_flow += path_flow;
