@@ -57,19 +57,18 @@ public class Runner {
         }
     }
 
-
     // Display Menu and Result Function
     private static void displayMenu() {
         // Asking user if he needs to insert, delete edge from a graph or if he needs to quit the program
         System.out.println("\n | MAIN MENU ==========>" +
                 "\n | Enter " +
-                "\n | (1) Insert an Edge, " +
-                "\n | (2) Delete an Edge, " +
-                "\n | (3) Insert a Node, " +
-                "\n | (4) Delete a Node, " +
-                "\n | (5) Check if edge exists, " +
-                "\n | (6) Perform max flow finding, " +
-                "\n | (any other key) to quit the program.");
+                "\n | (1) Insert an Edge " +
+                "\n | (2) Delete an Edge " +
+                "\n | (3) Insert a Node " +
+                "\n | (4) Delete a Node " +
+                "\n | (5) Check if edge exists " +
+                "\n | (6) Perform max flow finding " +
+                "\n | (any other key) to quit the program");
         System.out.print("\n = Enter your option: ");
         Scanner input = new Scanner(System.in);
 
