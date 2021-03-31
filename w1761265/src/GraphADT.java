@@ -1,5 +1,12 @@
 import java.util.ArrayList;
 
+/*
+ *  Name: Nazhim Kalam
+ *  Student ID:2019281
+ *  UoW: w1761265
+ *  Algorithms - Coursework 01
+ */
+
 public abstract class GraphADT {
 
     // Returns the generated Adjacency Matrix
