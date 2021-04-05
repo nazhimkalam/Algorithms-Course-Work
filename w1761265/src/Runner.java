@@ -8,7 +8,7 @@
 /*
 *   Important Note
 *   - When you wish to create a new node, make sure u also add edges to connect to the new node, else the max flow cannot be
-*     found.
+*     found. (since there is no edges connected to the sink node in order to find the max flow between source to sink)
 */
 
 import java.util.ArrayList;
