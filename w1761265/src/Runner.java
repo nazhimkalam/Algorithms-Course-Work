@@ -168,34 +168,40 @@ public class Runner {
 
     }
 
+    /*
+    @param insertingEdge: boolean to check if we are inserting edge or updating existing edge
+     */
     // A function to get inputs related to Edge
     private static int[] getEdgeInfo(boolean insertingEdge) {
 
-        int from_node = validatingIntegers(" Enter the 'from' node value (Positive Integers expected): ");
+        int fromNode = validatingIntegers(" Enter the 'from' node value (Positive Integers expected): ");
         // Positive Integer Validation
-        while(from_node < 0){
-            from_node = validatingIntegers(" Enter the 'from' node value (Positive Integers expected): ");
+        while(fromNode < 0){
+            fromNode = validatingIntegers(" Enter the 'from' node value (Positive Integers expected): ");
         }
 
-        int to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected): ");
+        int toNode = validatingIntegers(" Enter the 'to' node value (Positive Integers expected): ");
         // Positive Integer Validation
-        while(to_node < 0){
-            to_node = validatingIntegers(" Enter the 'to' node value (Positive Integers expected): ");
+        while(toNode < 0){
+            toNode = validatingIntegers(" Enter the 'to' node value (Positive Integers expected): ");
         }
 
         if (insertingEdge) {
-            int capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected): ");
+            int capacityValue = validatingIntegers(" Enter the capacity value (Positive Integers expected): ");
 
             // Positive Integer Validation
-            while(capacity_value < 0){
-                capacity_value = validatingIntegers(" Enter the capacity value (Positive Integers expected): ");
+            while(capacityValue < 0){
+                capacityValue = validatingIntegers(" Enter the capacity value (Positive Integers expected): ");
             }
-            return new int[]{from_node, to_node, capacity_value};
+            return new int[]{fromNode, toNode, capacityValue};
         }
 
-        return new int[]{from_node, to_node};
+        return new int[]{fromNode, toNode};
     }
 
+    /*
+    @param message: string for specific messages to be displayed
+     */
     // validates the Integers
     public static int validatingIntegers(String message) {
         Scanner input = new Scanner(System.in);

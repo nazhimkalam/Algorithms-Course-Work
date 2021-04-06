@@ -13,6 +13,9 @@ import java.util.Scanner;
 // This class is used to read data from a txt file and return the result
 public class ReadDataFile {
 
+    /*
+    @param filePath: getting the file path to read the data from
+     */
     public static ArrayList<String> readingData(String filePath){
         // Stores collection of lines from the input file
         ArrayList<String> inputData = new ArrayList<>();
@@ -23,6 +26,8 @@ public class ReadDataFile {
         try {
             File myObj = new File(filePath);
             Scanner myReader = new Scanner(myObj);
+
+            // Reading from the file when it has a valid line present
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 inputData.add(data);
@@ -32,6 +37,7 @@ public class ReadDataFile {
             // Exception Occurred
             System.out.println(" An error occurred.");
             System.out.println(" File not found!");
+
         }
 
         return inputData;

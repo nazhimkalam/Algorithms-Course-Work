@@ -5,28 +5,33 @@
  *  Algorithms - Coursework 01
  */
 
-// Ford Fulkerson Algorithm used to find the maximum flow of a Graph
+/* Ford Fulkerson Algorithm used to find the maximum flow of a Graph */
 public class FordFulkerson {
-    public static int tot_Vertex;
+    public static int totalVertices;
     public static Graph graphOptions = new Graph();
 
-    // Returns tne maximum flow from s to t in the given graph
+    /*
+    Returns tne maximum flow from source to target in the given graph
+    @param data: Contains the Adjacent Matrix Graph data
+    @param source: Starting node or the source node of the graph
+    @param target: Ending node or the sink node of the graph
+    */
     public static String fordFulkerson(int[][] data, int source, int target) {
 
         // Variables
-        tot_Vertex = target + 1;    //Total Number of vertices the flow network
-        int u;                      // starting node
-        int v;                      // ending node
-        int[][] residualGraph = new int[tot_Vertex][tot_Vertex];   // initializing residual graph
+        totalVertices = target + 1;        //Total Number of vertices the flow network
+        int fromNode;                      // starting node
+        int toNode;                        // ending node
+        int[][] residualGraph = new int[totalVertices][totalVertices];   // initializing residual graph
 
         /* We are creating a residual graph by filling the residual graph with the given capacities from the
            original graph.
-           In the Residual graph resGraph[x][y] indicates the residual capacity of edge from x to y.
-           If rGraph[i][j] is 0, then there is No edge Else if its not 0 then there IS AN Edge
+           In the Residual graph resGraph[fromNode][toNode] indicates the residual capacity of edge from (fromNode) to (toNode).
+           If rGraph[fromNode][toNode] is 0, then there is No edge Else if its not 0 then there IS AN Edge
         */
-        for (u = 0; u < tot_Vertex; u++) {
-            for (v = 0; v < tot_Vertex; v++) {
-                residualGraph[u][v] = data[u][v];
+        for (fromNode = 0; fromNode < totalVertices; fromNode++) {
+            for (toNode = 0; toNode < totalVertices; toNode++) {
+                residualGraph[fromNode][toNode] = data[fromNode][toNode];
             }
         }
         System.out.println(" Creating the residual graph... \n");
@@ -34,16 +39,16 @@ public class FordFulkerson {
         // Visualize the Residual Graph
         graphOptions.visualizeGraph(residualGraph);
 
-        /* The parent_arr is used to store the found path and is filled by BFS
+        /* The parent is used to store the found path and is filled by BFS
            initialized with tot_Vertex because the max path can have all the number of vertices in the graph
            (same node can't be visited more than once) */
-        int[] parent_arr = new int[tot_Vertex];
+        int[] parent = new int[totalVertices];
 
         // Initially we set the flow to 0, because there is no flow initially
         int maximum_flow = 0;
 
         // Updating the residual values of edges by augmenting the flow while there is a path from source to sink.
-        while (BFS.bfs(residualGraph, source, target, parent_arr, tot_Vertex)) {
+        while (BFS.bfs(residualGraph, source, target, parent, totalVertices)) {
 
             /* By using BFS we are finding the (minimum residual capacity) of the edges along the path which can be
                filled with. */
@@ -51,25 +56,25 @@ public class FordFulkerson {
             int path_flow = Integer.MAX_VALUE;
             // assigning the maximum value an integer possible - because minimum residual capacity is needed to be found
 
-            for (v = target; v != source; v = parent_arr[v]) {
-                u = parent_arr[v];
+            for (toNode = target; toNode != source; toNode = parent[toNode]) {
+                fromNode = parent[toNode];
 
                 // getting the minimum value out of path_flow and rGraph[u][v] (capacity of edge in residual graph)
-                path_flow = Math.min(path_flow, residualGraph[u][v]);
+                path_flow = Math.min(path_flow, residualGraph[fromNode][toNode]);
             }
 
             System.out.println(" The bottleneck capacity value from the residual graph found is : " + path_flow);
             System.out.println(" Updating the residual capacities of the edges... \n");
 
             // Updating the residual capacities of the edges and also reversing the edges along the path.
-            for (v = target; v != source; v = parent_arr[v]) {
-                u = parent_arr[v];
+            for (toNode = target; toNode != source; toNode = parent[toNode]) {
+                fromNode = parent[toNode];
 
                 // decreasing capacity from the flow sent; to get the residual capacity (forward direction)
-                residualGraph[u][v] -= path_flow;
+                residualGraph[fromNode][toNode] -= path_flow;
 
                 // adding the flow sent to the reverse capacity; to get the residual capacity (backward direction)
-                residualGraph[v][u] += path_flow;
+                residualGraph[toNode][fromNode] += path_flow;
             }
 
             // Visualize the Updated Residual Graph
@@ -103,7 +108,7 @@ public class FordFulkerson {
  - For this we can use either BFS ot DFS to the residual graph.
  - BFS is used here because it promises to find the shortest possible path with the maximum flow where DFS doesn't.
  - So using BFS we can find the shortest path from source to sink.
- - BFS makes use of the parent_arr[] array to store the found paths.
+ - BFS makes use of the parent[] array to store the found paths.
  - We now traverse through the found path and find possible flow through this path by finding minimum residual capacity,
    along the path.
  - Once we get the found path with the flow capacity we add it to the overall flow.

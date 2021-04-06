@@ -10,6 +10,9 @@ import java.util.ArrayList;
 // This class is used to Generate an Adjacent Matrix for a given Graph
 public class Graph extends GraphADT{
 
+    /*
+     @param inputData: Contains a list of strings which were read from the text file
+    */
     @Override
     public int[][] generateGraph(ArrayList<String> inputData) {
         // This method returns the created Adjacent Matrix
@@ -31,21 +34,30 @@ public class Graph extends GraphADT{
         for (int item = 1; item < inputData.size(); item++) {
             // Extracting the data to create the graph
             String[] split_data = inputData.get(item).split(" ");
-            int x_index = Integer.parseInt(split_data[0].trim());
-            int y_index = Integer.parseInt(split_data[1].trim());
-            int value = Integer.parseInt(split_data[2].trim());
+            int fromNode = Integer.parseInt(split_data[0].trim());
+            int toNode = Integer.parseInt(split_data[1].trim());
+            int capacityValue = Integer.parseInt(split_data[2].trim());
 
             // Adding edge
-            addEdge(x_index, y_index, value, graph_data);
+            addEdge(fromNode, toNode, capacityValue, graph_data);
         }
         return graph_data;
     }
 
+    /*
+     @param fromNode: starting node
+     @param toNode: ending node
+     @param capacityValue: capacity value
+     @param graph_data: graph data 2D matrix
+    */
     // Adding edge to the graph when creating the graph
-    private static void addEdge(int x_index, int y_index, int value, int[][] graph_data) {
-        graph_data[x_index][y_index] = value;
+    private static void addEdge(int fromNode, int toNode, int capacityValue, int[][] graph_data) {
+        graph_data[fromNode][toNode] = capacityValue;
     }
 
+    /*
+    @param graph_data: graph data 2D matrix
+     */
     @Override
     public void visualizeGraph(int[][] graph_data) {
         // Assuming that we aren't dealing with integers greater than 999 as of now (for graph visualization)
@@ -98,6 +110,11 @@ public class Graph extends GraphADT{
         System.out.println(" = The Target Node is: " + (graph_data.length - 1));
     }
 
+    /*
+    @param graph_data: graph data 2D matrix
+    @param fromVertex: starting node
+    @param toVertex: ending node
+     */
     @Override
     public boolean existsEdge(int fromVertex, int toVertex, int[][] graph) {
         // Checking if an edge is present in between the vertices given by the user
@@ -112,6 +129,10 @@ public class Graph extends GraphADT{
 
     }
 
+    /*
+    @param graph_data: graph data 2D matrix
+    @param edgeDetails: details of the edge in an array format
+     */
     @Override
     public int[][] insertEdge(int[] edgeDetails, int[][] graph_data){
         // Checking if it is a valid edge
@@ -137,6 +158,10 @@ public class Graph extends GraphADT{
         return graph_data;
     }
 
+    /*
+    @param graph_data: graph data 2D matrix
+    @param edgeDetails: details of the edge in an array format
+     */
     @Override
     public int[][] deleteEdge(int[] edgeDetails, int[][] graph_data) {
         // Delete Edge Method
@@ -155,6 +180,9 @@ public class Graph extends GraphADT{
         return graph_data;
     }
 
+    /*
+    @param graph: graph data 2D matrix
+     */
     @Override
     public int[][] insertNode(int[][] graph) {
 
@@ -175,6 +203,10 @@ public class Graph extends GraphADT{
         return updatedGraph;
     }
 
+    /*
+    @param graph: graph data 2D matrix
+    @param deleteNode: the value of the node to be deleted from the graph
+     */
     @Override
     public int[][] deleteNode(int deleteNode, int[][] graph) {
         /* Delete Node (We are only removing all its edge of the node which has to be deleted which also means that
@@ -211,6 +243,9 @@ public class Graph extends GraphADT{
         return graph;
     }
 
+    /*
+   @param graph_data: graph data 2D matrix
+    */
     // Organising the graph before printing it out
     private static String[][] organiseGraph(int[][] graph_data) {
         String[][] graph_representation = new String[graph_data.length][graph_data.length];
