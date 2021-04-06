@@ -15,7 +15,7 @@ public class BFS {
     /*
      Using BFS as the searching algorithm (Breadth-first search)
      This function returns "true" if there is a path from source 's' to sink 't' in the residual graph.
-     It also fills parent[] array to store the path
+     It also fills parent_arr[] array to store the path
     */
     public static boolean bfs(int[][] Graph, int source, int target, int[] parent_arr, int tot_Vertex) {
 
@@ -42,7 +42,7 @@ public class BFS {
             int x_index = queue.poll();
 
             /* Once a connection to the target/sink vertex is found we stop the BFS process and
-               set to its parent */
+               set to its parent_arr */
             for (int y_index = 0; y_index < tot_Vertex; y_index++) {
                 if (!visited[y_index] && Graph[x_index][y_index] > 0) {
                     /* if the node hasn't been visited previously and
