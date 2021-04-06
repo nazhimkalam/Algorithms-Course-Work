@@ -37,7 +37,7 @@ public class FordFulkerson {
         System.out.println(" Creating the residual graph... \n");
 
         // Visualize the Residual Graph
-        graphOptions.visualizeGraph(residualGraph);
+        graphOptions.visualizeGraph(residualGraph, false);
 
         /* The parent is used to store the found path and is filled by BFS
            initialized with tot_Vertex because the max path can have all the number of vertices in the graph
@@ -78,7 +78,8 @@ public class FordFulkerson {
             }
 
             // Visualize the Updated Residual Graph
-            graphOptions.visualizeGraph(residualGraph);
+            graphOptions.visualizeGraph(residualGraph, false);
+            System.out.println();
 
             // Adding the path flows to the overall flow
             maximum_flow += path_flow;

@@ -44,7 +44,7 @@ public class Runner {
 
             // Viewing the created matrix (if necessary)
             System.out.println(" This is the Adjacent Matrix of the Current Graph \n");
-            graphOptions.visualizeGraph(graph_data);
+            graphOptions.visualizeGraph(graph_data, true);
             System.out.println();
 
             // Displaying the result to the user by calling the ford fulkerson algorithm

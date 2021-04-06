@@ -13,7 +13,7 @@ public abstract class GraphADT {
     public abstract int[][] generateGraph(ArrayList<String> inputData);
 
     // Prints out the graph and displays
-    public abstract void visualizeGraph(int[][] graph_data);
+    public abstract void visualizeGraph(int[][] graph_data, boolean otherStatistics);
 
     // Returns if the edge is present or not
     public abstract boolean existsEdge(int vertexOne, int vertexTwo, int[][] graph);

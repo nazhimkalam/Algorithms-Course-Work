@@ -57,9 +57,10 @@ public class Graph extends GraphADT{
 
     /*
     @param graph_data: graph data 2D matrix
+    @param otherStatistics: displaying other statistics such as number of edges, node etc...
      */
     @Override
-    public void visualizeGraph(int[][] graph_data) {
+    public void visualizeGraph(int[][] graph_data, boolean otherStatistics) {
         // Assuming that we aren't dealing with integers greater than 999 as of now (for graph visualization)
 
         // Code for displaying the graph to the console
@@ -104,10 +105,13 @@ public class Graph extends GraphADT{
             rowCounter++;
         }
 
-        System.out.println("\n = Total Number of Nodes/Vertices present: " + graph_data.length);
-        System.out.println(" = Total Number of Edges present: " + edge_count);
-        System.out.println(" = The Source Node is: 0");
-        System.out.println(" = The Target Node is: " + (graph_data.length - 1));
+        if(otherStatistics){
+            System.out.println("\n = Total Number of Nodes/Vertices present: " + graph_data.length);
+            System.out.println(" = Total Number of Edges present: " + edge_count);
+            System.out.println(" = The Source Node is: 0");
+            System.out.println(" = The Target Node is: " + (graph_data.length - 1));
+        }
+
     }
 
     /*
