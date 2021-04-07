@@ -36,7 +36,7 @@ public class BFS {
         LinkedList<Integer> queue = new LinkedList<>();
         queue.add(source);
         visited[source] = true;     // source is always visited at the beginning
-        parent[source] = -1;    /* -1 is never given to a node, it's used to identify that there's no node
+        parent[source] = -1;        /* -1 is never given to a node, it's used to identify that there's no node
                                       before the source node */
 
         /* This is the normal standard BFS (Breadth-first search) Loop */

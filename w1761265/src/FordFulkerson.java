@@ -7,6 +7,8 @@
 
 /* Ford Fulkerson Algorithm used to find the maximum flow of a Graph */
 public class FordFulkerson {
+
+    // Static Variables
     public static int totalVertices;
     public static Graph graphOptions = new Graph();
 

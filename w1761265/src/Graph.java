@@ -105,6 +105,7 @@ public class Graph extends GraphADT{
             rowCounter++;
         }
 
+        // Displaying other statistics of the graph such as number of nodes/vertices, edges, source and target node
         if(otherStatistics){
             System.out.println("\n = Total Number of Nodes/Vertices present: " + graph_data.length);
             System.out.println(" = Total Number of Edges present: " + edge_count);
